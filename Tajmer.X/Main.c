@@ -3,6 +3,7 @@
 //#include <p30fxxxx.h>
 #include "adc.h"
 #include "Tajmeri.h"
+#include <stdbool.h> 
 
 _FOSC(CSW_FSCM_OFF & XT_PLL4);//instruction takt je isti kao i kristal 10MHz
 _FWDT(WDT_OFF);
@@ -12,6 +13,13 @@ unsigned int pir,mq3,foto, enpir, enfoto;
 unsigned int broj,broj1,broj2,tempRX;
 
 unsigned int brojac_ms,stoperica,ms,sekund;
+
+unsigned int morzeI=0;
+unsigned int morzeBrojac=0;
+unsigned int x;
+unsigned int niz[3];
+unsigned char sifra[3];
+unsigned char sifraProvera;
 
 /***************************************************************************
 * Ime funkcije      : initUART1                                            *
@@ -141,9 +149,6 @@ void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
 		stoperica = 0;
 		while(stoperica < vreme);
 	}
-/*
- * 
- */
 
 void servo0()
 {
@@ -169,6 +174,72 @@ void servo180()
     Delay_ms(160);
 }
 
+
+bool proveriSifru()
+{
+    if(sifra[0] == '-' && sifra[1] == '.' && sifra[2] == '-') //morzeov kod za slovo K je -.-
+        return 1;
+    else
+        return 0;
+}
+
+
+bool morze()
+{
+    if(foto > 1000) // mozda treba while / do while
+    {
+        Delay_ms(100); //sacekaj 10ms
+        morzeI++; //povecaj morzeI (neki brojac), ako je npr morzeI = 10, to znaci da je svetlosni impuls trajao 100ms
+        x = morzeI; //upisi vrednost brojaca u promenljivu x
+        WriteUART1('T'); //debuguing linija
+    }
+    else
+    {
+        morzeI=0; //doslo je do prekida svetlosti, stavi brojac na 0
+        x = x*10; //mnozim sa 10 da bi dobio x u mili sekundama
+        WriteUART1('N'); // debuging linija
+        //WriteUART1dec2string(x); //debuging linija
+    }
+    
+    /*if(morzeBrojac < 3)  // ovaj deo ne radi, treba se jos igrati da vidimo sta je
+    {
+        niz[morzeBrojac]=x;
+        x=0;
+        morzeBrojac++;
+    }
+    else
+    {
+        if(niz[0] > 800   &&   niz[0] < 1200)
+            sifra[0]  = '-';
+        else if(niz[0] > 350  &&  niz[0] < 650)
+            sifra[0] = '.';
+        
+        if(niz[1] > 800   &&   niz[1] < 1200)
+            sifra[1]  = '-';
+        else if(niz[1] > 350  &&  niz[1] < 650)
+            sifra[1] = '.';
+        
+        if(niz[2] > 800   &&   niz[2] < 1200)
+            sifra[2]  = '-';
+        else if(niz[2] > 350  &&  niz[2] < 650)
+            sifra[2] = '.';
+        
+        if(proveriSifru() == 1)
+            return 1;
+        else if(proveriSifru() == 0)
+            return 0;
+        
+        morzeBrojac = 0;     
+    }*/
+    
+}
+
+
+/*
+ * 
+ */
+
+
 int main(int argc, char** argv) {
     
     for(broj1=0;broj1<10000;broj1++);
@@ -190,12 +261,17 @@ int main(int argc, char** argv) {
         
 	while(1)
 	{
-        ispisiPir(pir);
-        ispisiMq3(mq3);
+       // ispisiPir(pir);
+       // ispisiMq3(mq3);
         ispisiFoto(foto);
+        morze();
+        //WriteUART1(sifra[0]);
+        //WriteUART1(sifra[1]);
+        //WriteUART1(sifra[2]);
 		WriteUART1(13);//enter
                 
-        servo0();
+        //servo0();
+       // Delay_ms(2000);
 	}//od whilea
 
     return (EXIT_SUCCESS);

@@ -1,4 +1,4 @@
-Microchip Technology Inc, vX†€
+Microchip Technology Inc, vøƒÆ
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
@@ -59,19 +59,20 @@ Program Memory  [Origin = 0x100, Length = 0x7efe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100                0x98            0xe4  (228)
-.text                        0x198               0x30a           0x48f  (1167)
-.dinit                       0x4a2                 0x8             0xc  (12)
+.text                        0x198               0x35e           0x50d  (1293)
+.dinit                       0x4f6                0x12            0x1b  (27)
 
-                     Total program memory used (bytes):          0x57f  (1407) 2%
+                     Total program memory used (bytes):          0x60c  (1548) 3%
 
 
 Data Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0            0x1a  (26)
+.nbss                        0x800                   0            0x26  (38)
+.ndata                       0x826                   0             0x4  (4)
 
-                        Total data memory used (bytes):           0x1a  (26) 1%
+                        Total data memory used (bytes):           0x2a  (42) 2%
 
 
 Dynamic Memory Usage
@@ -79,9 +80,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x81a                               0x7e6  (2022)
+stack                        0x82a                               0x7d6  (2006)
 
-                        Maximum dynamic memory (bytes):          0x7e6  (2022)
+                        Maximum dynamic memory (bytes):          0x7d6  (2006)
 
 
 External Symbols in Data Memory (by address):
@@ -99,6 +100,12 @@ External Symbols in Data Memory (by address):
                     0x0814                  _stoperica
                     0x0816                  _ms
                     0x0818                  _sekund
+                    0x081a                  _x
+                    0x081c                  _niz
+                    0x0822                  _sifra
+                    0x0825                  _sifraProvera
+                    0x0826                  _morzeI
+                    0x0828                  _morzeBrojac
 
 External Symbols in Data Memory (by name):
 
@@ -109,12 +116,18 @@ External Symbols in Data Memory (by name):
                     0x0808                  _enfoto
                     0x0806                  _enpir
                     0x0804                  _foto
+                    0x0828                  _morzeBrojac
+                    0x0826                  _morzeI
                     0x0802                  _mq3
                     0x0816                  _ms
+                    0x081c                  _niz
                     0x0800                  _pir
                     0x0818                  _sekund
+                    0x0822                  _sifra
+                    0x0825                  _sifraProvera
                     0x0814                  _stoperica
                     0x0810                  _tempRX
+                    0x081a                  _x
 
 External Symbols in Program Memory (by address):
 
@@ -137,15 +150,17 @@ External Symbols in Program Memory (by address):
                   0x000388                  _servo0
                   0x00039a                  _servo90
                   0x0003ac                  _servo180
-                  0x0003be                  _main
-                  0x000416                  _ADCinit
-                  0x00048c                  _Init_T2
+                  0x0003be                  _proveriSifru
+                  0x0003ea                  _morze
+                  0x00041e                  _main
+                  0x00046a                  _ADCinit
+                  0x0004e0                  _Init_T2
 
 External Symbols in Program Memory (by name):
 
-                  0x000416                  _ADCinit
+                  0x00046a                  _ADCinit
                   0x000372                  _Delay_ms
-                  0x00048c                  _Init_T2
+                  0x0004e0                  _Init_T2
                   0x0001d2                  _WriteUART1
                   0x0001fa                  _WriteUART1dec2string
                   0x0001ba                  __ADCInterrupt
@@ -161,7 +176,9 @@ External Symbols in Program Memory (by name):
                   0x0002e0                  _ispisiFoto
                   0x0002ac                  _ispisiMq3
                   0x00027c                  _ispisiPir
-                  0x0003be                  _main
+                  0x00041e                  _main
+                  0x0003ea                  _morze
+                  0x0003be                  _proveriSifru
                   0x000388                  _servo0
                   0x0003ac                  _servo180
                   0x00039a                  _servo90
@@ -288,30 +305,30 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1e95
+.debug_info       0x000000       0x202c
  *(.debug_info)
- .debug_info      0x000000        0x52e build/default/production/Tajmeri.o
- .debug_info      0x00052e        0xf64 build/default/production/Main.o
- .debug_info      0x001492        0xa03 build/default/production/adc.o
+ .debug_info      0x000000        0x55d build/default/production/Tajmeri.o
+ .debug_info      0x00055d       0x109d build/default/production/Main.o
+ .debug_info      0x0015fa        0xa32 build/default/production/adc.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x2e7
+.debug_abbrev     0x000000        0x30e
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xb8 build/default/production/Tajmeri.o
- .debug_abbrev    0x0000b8        0x177 build/default/production/Main.o
- .debug_abbrev    0x00022f         0xb8 build/default/production/adc.o
+ .debug_abbrev    0x0000b8        0x19e build/default/production/Main.o
+ .debug_abbrev    0x000256         0xb8 build/default/production/adc.o
 
-.debug_line       0x000000        0x697
+.debug_line       0x000000        0x716
  *(.debug_line)
  .debug_line      0x000000         0xd6 build/default/production/Tajmeri.o
- .debug_line      0x0000d6        0x477 build/default/production/Main.o
- .debug_line      0x00054d        0x14a build/default/production/adc.o
+ .debug_line      0x0000d6        0x4f6 build/default/production/Main.o
+ .debug_line      0x0005cc        0x14a build/default/production/adc.o
 
-.debug_frame      0x000000        0x14c
+.debug_frame      0x000000        0x16c
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/default/production/Tajmeri.o
- .debug_frame     0x000024        0x104 build/default/production/Main.o
- .debug_frame     0x000128         0x24 build/default/production/adc.o
+ .debug_frame     0x000024        0x124 build/default/production/Main.o
+ .debug_frame     0x000148         0x24 build/default/production/adc.o
 
 .debug_str        0x000000         0xb2
  *(.debug_str)
@@ -326,14 +343,14 @@ userdata
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x1ca
+                  0x000000        0x229
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x1e build/default/production/Tajmeri.o
  .debug_pubnames
-                  0x00001e        0x18e build/default/production/Main.o
+                  0x00001e        0x1ed build/default/production/Main.o
  .debug_pubnames
-                  0x0001ac         0x1e build/default/production/adc.o
+                  0x00020b         0x1e build/default/production/adc.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1199,8 +1216,8 @@ __c30_signature
  __c30_signature
                   0x000282          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
 
-.nbss               0x0800         0x1a
- .nbss              0x0800         0x1a build/default/production/Main.o
+.nbss               0x0800         0x26
+ .nbss              0x0800         0x26 build/default/production/Main.o
                     0x0800                  _pir
                     0x0802                  _mq3
                     0x0804                  _foto
@@ -1214,9 +1231,18 @@ __c30_signature
                     0x0814                  _stoperica
                     0x0816                  _ms
                     0x0818                  _sekund
+                    0x081a                  _x
+                    0x081c                  _niz
+                    0x0822                  _sifra
+                    0x0825                  _sifraProvera
 
-.text             0x000198        0x30a
- .text            0x000198        0x27e build/default/production/Main.o
+.ndata              0x0826          0x4
+ .ndata             0x0826          0x4 build/default/production/Main.o
+                    0x0826                  _morzeI
+                    0x0828                  _morzeBrojac
+
+.text             0x000198        0x35e
+ .text            0x000198        0x2d2 build/default/production/Main.o
                   0x000198                  _initUART1
                   0x0001b2                  __U1RXInterrupt
                   0x0001ba                  __ADCInterrupt
@@ -1231,11 +1257,13 @@ __c30_signature
                   0x000388                  _servo0
                   0x00039a                  _servo90
                   0x0003ac                  _servo180
-                  0x0003be                  _main
- .text            0x000416         0x76 build/default/production/adc.o
-                  0x000416                  _ADCinit
- .text            0x00048c         0x16 build/default/production/Tajmeri.o
-                  0x00048c                  _Init_T2
+                  0x0003be                  _proveriSifru
+                  0x0003ea                  _morze
+                  0x00041e                  _main
+ .text            0x00046a         0x76 build/default/production/adc.o
+                  0x00046a                  _ADCinit
+ .text            0x0004e0         0x16 build/default/production/Tajmeri.o
+                  0x0004e0                  _Init_T2
 
-.dinit            0x0004a2          0x8
- .dinit           0x0004a2          0x8 data_init
+.dinit            0x0004f6         0x12
+ .dinit           0x0004f6         0x12 data_init
