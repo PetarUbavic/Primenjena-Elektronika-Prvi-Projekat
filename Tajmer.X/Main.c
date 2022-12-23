@@ -20,6 +20,8 @@ unsigned int x;
 unsigned int niz[3];
 unsigned char sifra[3];
 unsigned char sifraProvera;
+char r=0;
+bool y;
 
 /***************************************************************************
 * Ime funkcije      : initUART1                                            *
@@ -199,39 +201,41 @@ bool morze()
         x = x*10; //mnozim sa 10 da bi dobio x u mili sekundama
         WriteUART1('N'); // debuging linija
         //WriteUART1dec2string(x); //debuging linija
+        
+        ////////////////////////
+        if(morzeBrojac < 3 && x != 0)  // ovaj deo ne radi, treba se jos igrati da vidimo sta je
+        {
+            niz[morzeBrojac]=x;
+            x=0;
+            morzeBrojac++;
+        }
+        else if(morzeBrojac == 2)
+        {
+            if(niz[0] > 800   &&   niz[0] < 1200)
+                sifra[0]  = '-';
+            else if(niz[0] > 350  &&  niz[0] < 650)
+                sifra[0] = '.';
+
+            if(niz[1] > 800   &&   niz[1] < 1200)
+                sifra[1]  = '-';
+            else if(niz[1] > 350  &&  niz[1] < 650)
+                sifra[1] = '.';
+
+            if(niz[2] > 800   &&   niz[2] < 1200)
+                sifra[2]  = '-';
+            else if(niz[2] > 350  &&  niz[2] < 650)
+                sifra[2] = '.';
+
+            if(proveriSifru() == 1)
+                return 1;
+            else if(proveriSifru() == 0)
+                return 0;
+
+            morzeBrojac = 0;     
+        }
+        ////////////////////////
     }
-    
-    /*if(morzeBrojac < 3)  // ovaj deo ne radi, treba se jos igrati da vidimo sta je
-    {
-        niz[morzeBrojac]=x;
-        x=0;
-        morzeBrojac++;
-    }
-    else
-    {
-        if(niz[0] > 800   &&   niz[0] < 1200)
-            sifra[0]  = '-';
-        else if(niz[0] > 350  &&  niz[0] < 650)
-            sifra[0] = '.';
-        
-        if(niz[1] > 800   &&   niz[1] < 1200)
-            sifra[1]  = '-';
-        else if(niz[1] > 350  &&  niz[1] < 650)
-            sifra[1] = '.';
-        
-        if(niz[2] > 800   &&   niz[2] < 1200)
-            sifra[2]  = '-';
-        else if(niz[2] > 350  &&  niz[2] < 650)
-            sifra[2] = '.';
-        
-        if(proveriSifru() == 1)
-            return 1;
-        else if(proveriSifru() == 0)
-            return 0;
-        
-        morzeBrojac = 0;     
-    }*/
-    
+    /**/
 }
 
 
@@ -261,16 +265,29 @@ int main(int argc, char** argv) {
         
 	while(1)
 	{
+        switch(r)
+        {
+            case 0:
+               if(detektujPrilaz(pir)==1)
+                   r++;
+           // case 1:
+        };
+           
+             
        // ispisiPir(pir);
        // ispisiMq3(mq3);
-        ispisiFoto(foto);
-        morze();
+       // ispisiFoto(foto);
+         y = morze();
+        if(y==1)
+            WriteUART1('P');
+        else if(y==0)
+            WriteUART1('K');
         //WriteUART1(sifra[0]);
         //WriteUART1(sifra[1]);
         //WriteUART1(sifra[2]);
 		WriteUART1(13);//enter
                 
-        //servo0();
+        servo0();
        // Delay_ms(2000);
 	}//od whilea
 
