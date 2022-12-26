@@ -185,7 +185,7 @@ bit 15-0 CSSL<15:0>: A/D Input Pin Scan Selection bits
 	0 = Skip ANx for input scan*/
 //ADCSSL=0b0001111111111111;
 
-  ADCSSL=0b100001100000000;
+  ADCSSL=0b000011100000000; //koristimo 8 9 i 10 8pir 9mq3 10foto
   
   
 ADCON1bits.ASAM=1;

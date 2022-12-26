@@ -1,3 +1,3 @@
-build/default/production/Tajmeri.o:  \
-Tajmeri.c  \
-tajmeri.h 
+build/default/production/Tajmeri.o: Tajmeri.c tajmeri.h
+
+tajmeri.h:

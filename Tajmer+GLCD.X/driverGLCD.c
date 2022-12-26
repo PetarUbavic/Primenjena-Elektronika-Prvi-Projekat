@@ -262,6 +262,7 @@ void ConfigureLCDPins (void)
 	
 	//LCD_DATA	P2//RB0 RB1 RB2 RB3 RD0 RD1 RD2 RD3
 	ADPCFGbits.PCFG0=1;
+    
 	TRISBbits.TRISB0=0;//RB0
 	ADPCFGbits.PCFG1=1;
 	TRISBbits.TRISB1=0;//RB1

@@ -1,26 +1,21 @@
-Microchip Technology Inc, v¸„Á
+Microchip Technology Inc, v2.00 (A)
 
 Tool Name:
-  c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
+  c:\program files\microchip\xc16\v2.00\bin\bin\..\bin/elf-ld.exe
 
 Command:
   -p30F4013 \
   -o \
   dist/default/production/Tajmer_GLCD.X.production.elf \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/.. \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/PIC24E \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/PIC24E/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/PIC24F \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/PIC24F/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/PIC24H \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/PIC24H/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/dsPIC30F/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC33E \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/dsPIC33E/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC33F \
-  -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/dsPIC33F/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/.. \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../lib \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/PIC24E/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/PIC24F/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/PIC24H/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/dsPIC30F/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/dsPIC33C/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/dsPIC33E/gld \
+  -Lc:/program files/microchip/xc16/v2.00/bin/bin/../../support/dsPIC33F/gld \
   build/default/production/Tajmeri.o \
   build/default/production/Main.o \
   build/default/production/adc.o \
@@ -40,50 +35,66 @@ Command:
   --smart-io \
   -Map=dist/default/production/Tajmer+GLCD.X.production.map \
   --report-mem \
+  --memorysummary \
+  dist/default/production/memoryfile.xml \
   -start-group \
-  --library=fx-elf \
-  --library=pic30-elf \
+  --library=c99-pic30-elf \
   --library=m-elf \
-  --library=c-elf \
+  --library=c99-elf \
   -end-group \
 
+
+Optional library libp30F4013.a not found
 Archive member included because of file (symbol)
 
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
                               (__resetPRI)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o) (__data_init_standard)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(divsf3.eo)
-                              build/default/production/driverGLCD.o (___divsf3)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o) (__data_init_standard)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
+                              (__crt_start_mode_normal)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
                               build/default/production/Main.o (___fixunssfsi)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
                               build/default/production/driverGLCD.o (___floatsisf)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
                               build/default/production/Main.o (___floatunsisf)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fpack.eo)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(divsf3.eo) (__fpack)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(funpack.eo)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo) (__funpack)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(funpack2.eo)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(divsf3.eo) (__funpack2)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(futil.eo)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(divsf3.eo) (__fPropagateNaN)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o) (__funpack)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o)
+                              build/default/production/driverGLCD.o (___divsf3)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
                               build/default/production/Main.o (___mulsf3)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatsisf.eo) (___floatdisf)
-c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
-                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatunsisf.eo) (___floatundisf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o) (__dnrmpackf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o) (__unpackdnrmf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o) (__typef)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o) (__propnanf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o) (__spackf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o) (__unpackf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(errno.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o) (_errno)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o) (___floatdisf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o) (___floatundisf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o) (__fpack)
 
 
 Selected CodeGuard Options:
   FGS:GWRP:GWRP_OFF
+  FGS:GCP:CODE_PROT_OFF
 
 CodeGuard FLASH Memory:
   boot    (none)
   secure  (none)
-  general 0x100 to 0x7ffc
+  general 0x100 to 0x7ffe
 
 CodeGuard RAM Memory:
   general 0x800 to 0xfff
@@ -96,27 +107,31 @@ CodeGuard EEPROM Memory:
   boot    (none)
 
 
-Program Memory  [Origin = 0x100, Length = 0x7efe]
+xc16-ld 2.00 (A)
+
+Default Code Model: Small
+Default Data Model: Small
+Default Scalar Model: Small
+
+"program" Memory  [Origin = 0x100, Length = 0x7f00]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x2ec           0x462  (1122)
-.const                       0x3ec               0xdbe          0x149d  (5277)
-.text                       0x11aa               0xeaa          0x15ff  (5631)
-.dinit                      0x2054                0x1c            0x2a  (42)
-.text                       0x2070                0x16            0x21  (33)
+.text                        0x100               0x71c           0xaaa  (2730)
+.const                       0x81c               0xdbe          0x149d  (5277)
+.text                       0x15da               0xe74          0x15ae  (5550)
+.dinit                      0x244e                0x14            0x1e  (30)
 
-                     Total program memory used (bytes):         0x2f49  (12105) 24%
+                 Total "program" memory used (bytes):         0x3513  (13587) 27%
 
 
-Data Memory  [Origin = 0x800, Length = 0x800]
+"data" Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0            0x38  (56)
-.ndata                       0x838                   0             0xa  (10)
+.nbss                        0x800                   0            0x42  (66)
 
-                        Total data memory used (bytes):           0x42  (66) 3%
+                 Total "data" memory used (bytes):           0x42  (66) 3%
 
 
 Dynamic Memory Usage
@@ -126,7 +141,9 @@ region                     address                      maximum length  (dec)
 heap                             0                                   0  (0)
 stack                        0x842                               0x7be  (1982)
 
-                        Maximum dynamic memory (bytes):          0x7be  (1982)
+                 Maximum dynamic memory (bytes):          0x7be  (1982)
+
+Info: Project is using a large data memory model when small data memory model is sufficient.
 
 
 External Symbols in Data Memory (by address):
@@ -152,17 +169,17 @@ External Symbols in Data Memory (by address):
                     0x0824                  _stoperica
                     0x0826                  _ms
                     0x0828                  _sekund
-                    0x082a                  _x
-                    0x082c                  _niz
-                    0x0832                  _sifra
-                    0x0835                  _sifraProvera
-                    0x0836                  _y
-                    0x0838                  _morzeI
-                    0x083a                  _morzeBrojac
-                    0x083c                  _r
-                    0x083e                  _kursorX
-                    0x083f                  _kursorY
-                    0x0840                  _strana
+                    0x082a                  _morzeI
+                    0x082c                  _morzeBrojac
+                    0x082e                  _x
+                    0x0830                  _niz
+                    0x0836                  _sifra
+                    0x0839                  _sifraProvera
+                    0x083a                  _r
+                    0x083b                  _y
+                    0x083c                  _kursorX
+                    0x083d                  _kursorY
+                    0x083e                  _strana
 
 External Symbols in Data Memory (by name):
 
@@ -175,203 +192,213 @@ External Symbols in Data Memory (by name):
                     0x081e                  _enfoto
                     0x081c                  _enpir
                     0x081a                  _foto
-                    0x083e                  _kursorX
-                    0x083f                  _kursorY
-                    0x083a                  _morzeBrojac
-                    0x0838                  _morzeI
+                    0x083c                  _kursorX
+                    0x083d                  _kursorY
+                    0x082c                  _morzeBrojac
+                    0x082a                  _morzeI
                     0x0818                  _mq3
                     0x0826                  _ms
-                    0x082c                  _niz
+                    0x0830                  _niz
                     0x0816                  _pir
-                    0x083c                  _r
+                    0x083a                  _r
                     0x0828                  _sekund
-                    0x0832                  _sifra
-                    0x0835                  _sifraProvera
+                    0x0836                  _sifra
+                    0x0839                  _sifraProvera
                     0x0800                  _sirovi0
                     0x0802                  _sirovi1
                     0x0824                  _stoperica
-                    0x0840                  _strana
+                    0x083e                  _strana
                     0x080a                  _temp0
                     0x080c                  _temp1
                     0x0820                  _tempRX
-                    0x082a                  _x
+                    0x082e                  _x
                     0x0812                  _x_vrednost
-                    0x0836                  _y
+                    0x083b                  _y
                     0x0814                  _y_vrednost
 
 External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
-                  0x000126                  __psv_init
-                  0x000136                  __data_init
-                  0x000136                  __data_init_standard
-                  0x000198                  __DefaultInterrupt
-                  0x00019c                  ___divsf3
-                  0x000220                  ___fixunssfsi
-                  0x000256                  ___floatsisf
-                  0x00025c                  ___floatunsisf
-                  0x000260                  __fpack
-                  0x0002ac                  __funpack
-                  0x0002d6                  __funpack2
-                  0x0002e6                  __fPropagateNaN
-                  0x0002f8                  __fbopExit
-                  0x000300                  __fbopReturnNaN
-                  0x000306                  ___mulsf3
-                  0x00036e                  ___floatdisf
-                  0x00038e                  ___floatundisf
-                  0x0003ec                  _fontBIG
-                  0x00099c                  _font
-                  0x000d9c                  _AD_Xmin
-                  0x000d9e                  _AD_Xmax
-                  0x000da0                  _AD_Ymin
-                  0x000da2                  _AD_Ymax
-                  0x000da4                  _tasteri_bmp
-                  0x0011aa                  _SetRST
-                  0x0011ca                  _SetE
-                  0x0011e8                  _SetRW
-                  0x001206                  _SetRS
-                  0x001224                  _SetCS2
-                  0x001244                  _SetCS1
-                  0x001262                  _ConfigureLCDPins
-                  0x001290                  _ConfigureLcdData
-                  0x0012c4                  _SetLcdData
-                  0x001302                  _ReadLcdData
-                  0x001328                  _strobe_data
-                  0x001336                  _LcdInstructionWrite
-                  0x00134c                  _LcdDelay
-                  0x001364                  _LcdWaitBusy
-                  0x001392                  _GoToX
-                  0x0013d8                  _GoToY
-                  0x0013f2                  _GoToXY
-                  0x001404                  _LcdSelectStartline
-                  0x001414                  _LcdSelectSide
-                  0x001454                  _LcdDataRead
-                  0x001486                  _GLCD_LcdInit
-                  0x0014e8                  _LcdDataWrite
-                  0x0014fe                  _GLCD_ClrScr
-                  0x00154a                  _GLCD_FillScr
-                  0x001596                  _GLCD_DisplayPicture
-                  0x00160a                  _LcdSetDot
-                  0x00164e                  _LcdResDot
-                  0x001694                  _GLCD_Circle
-                  0x0017b8                  _GLCD_Rectangle
-                  0x00182a                  _Glcd_PutChar
-                  0x0018ba                  _Glcd_PutCharBig
-                  0x0019b0                  _GLCD_Printf
-                  0x0019cc                  _GLCD_ShowGreed
-                  0x001a54                  _GLCD_Clr_Rectangle
-                  0x001ac6                  _ConfigureTSPins
-                  0x001ad0                  _initUART1
-                  0x001aea                  __U1RXInterrupt
-                  0x001af2                  __ADCInterrupt
-                  0x001b12                  _WriteUART1
-                  0x001b3a                  _Touch_Panel
-                  0x001ba4                  _Write_GLCD
-                  0x001c22                  _Delay
-                  0x001c3a                  _WriteUART1dec2string
-                  0x001cbc                  _ispisiPir
-                  0x001cec                  _ispisiMq3
-                  0x001d20                  _ispisiFoto
-                  0x001d54                  _detektujPrilaz
-                  0x001d82                  __T2Interrupt
-                  0x001db2                  _Delay_ms
-                  0x001dc8                  _servo0
-                  0x001dda                  _servo90
-                  0x001dec                  _servo180
-                  0x001dfe                  _proveriSifru
-                  0x001e2a                  _morze
-                  0x001f32                  _main
-                  0x001fd0                  _ConfigureADCPins
-                  0x001fde                  _ADCinit
-                  0x002070                  _Init_T2
+                  0x00013c                  __psv_init
+                  0x000152                  __data_init
+                  0x000152                  __data_init_standard
+                  0x0001c8                  __U1RXInterrupt
+                  0x0001d0                  __ADCInterrupt
+                  0x0001e8                  __T2Interrupt
+                  0x000214                  __DefaultInterrupt
+                  0x00021a                  ___fixunssfsi
+                  0x000250                  ___floatsisf
+                  0x000256                  ___floatunsisf
+                  0x00025a                  __funpack
+                  0x000284                  ___divsf3x
+                  0x000284                  ___divsf3
+                  0x000416                  __sdivf
+                  0x000442                  ___mulsf3x
+                  0x000442                  ___mulsf3
+                  0x00054e                  __dnrmpackf
+                  0x0005a2                  __unpackdnrmf
+                  0x000600                  __typef
+                  0x000634                  __propnanf
+                  0x000646                  __spackf
+                  0x0006ec                  __unpackf
+                  0x000752                  ___floatdisf
+                  0x000772                  ___floatundisf
+                  0x0007d0                  __fpack
+                  0x00081c                  _fontBIG
+                  0x000dcc                  _font
+                  0x0011cc                  _AD_Xmin
+                  0x0011ce                  _AD_Xmax
+                  0x0011d0                  _AD_Ymin
+                  0x0011d2                  _AD_Ymax
+                  0x0011d4                  _tasteri_bmp
+                  0x0015da                  _SetRST
+                  0x0015f6                  _SetE
+                  0x001612                  _SetRW
+                  0x00162e                  _SetRS
+                  0x00164a                  _SetCS2
+                  0x001666                  _SetCS1
+                  0x001682                  _ConfigureLCDPins
+                  0x0016b0                  _ConfigureLcdData
+                  0x0016e4                  _SetLcdData
+                  0x001724                  _ReadLcdData
+                  0x001752                  _strobe_data
+                  0x001760                  _LcdInstructionWrite
+                  0x001776                  _LcdDelay
+                  0x001792                  _LcdWaitBusy
+                  0x0017bc                  _GoToX
+                  0x0017f6                  _GoToY
+                  0x001810                  _GoToXY
+                  0x001826                  _LcdSelectStartline
+                  0x001834                  _LcdSelectSide
+                  0x00186e                  _LcdDataRead
+                  0x00189c                  _GLCD_LcdInit
+                  0x0018fe                  _LcdDataWrite
+                  0x001914                  _GLCD_ClrScr
+                  0x00196c                  _GLCD_FillScr
+                  0x0019c4                  _GLCD_DisplayPicture
+                  0x001a46                  _LcdSetDot
+                  0x001a94                  _LcdResDot
+                  0x001ae4                  _GLCD_Circle
+                  0x001c58                  _GLCD_Rectangle
+                  0x001ce2                  _Glcd_PutChar
+                  0x001d50                  _Glcd_PutCharBig
+                  0x001e0c                  _GLCD_Printf
+                  0x001e26                  _GLCD_ShowGreed
+                  0x001ec4                  _GLCD_Clr_Rectangle
+                  0x001f4e                  _Delay
+                  0x001f6a                  _ConfigureTSPins
+                  0x001f74                  _initUART1
+                  0x001f8e                  _WriteUART1
+                  0x001fb6                  _Touch_Panel
+                  0x002004                  _Write_GLCD
+                  0x002088                  _WriteUART1dec2string
+                  0x00210a                  _ispisiPir
+                  0x002138                  _ispisiMq3
+                  0x00216a                  _ispisiFoto
+                  0x00219c                  _detektujPrilaz
+                  0x0021c6                  _Delay_ms
+                  0x0021da                  _servo0
+                  0x0021ec                  _servo90
+                  0x0021fe                  _servo180
+                  0x002210                  _proveriSifru
+                  0x00223a                  _morze
+                  0x00232a                  _main
+                  0x0023c6                  _ConfigureADCPins
+                  0x0023d4                  _ADCinit
+                  0x00243a                  _Init_T2
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001fde                  _ADCinit
-                  0x000d9e                  _AD_Xmax
-                  0x000d9c                  _AD_Xmin
-                  0x000da2                  _AD_Ymax
-                  0x000da0                  _AD_Ymin
-                  0x001fd0                  _ConfigureADCPins
-                  0x001262                  _ConfigureLCDPins
-                  0x001290                  _ConfigureLcdData
-                  0x001ac6                  _ConfigureTSPins
-                  0x001c22                  _Delay
-                  0x001db2                  _Delay_ms
-                  0x001694                  _GLCD_Circle
-                  0x0014fe                  _GLCD_ClrScr
-                  0x001a54                  _GLCD_Clr_Rectangle
-                  0x001596                  _GLCD_DisplayPicture
-                  0x00154a                  _GLCD_FillScr
-                  0x001486                  _GLCD_LcdInit
-                  0x0019b0                  _GLCD_Printf
-                  0x0017b8                  _GLCD_Rectangle
-                  0x0019cc                  _GLCD_ShowGreed
-                  0x00182a                  _Glcd_PutChar
-                  0x0018ba                  _Glcd_PutCharBig
-                  0x001392                  _GoToX
-                  0x0013f2                  _GoToXY
-                  0x0013d8                  _GoToY
-                  0x002070                  _Init_T2
-                  0x001454                  _LcdDataRead
-                  0x0014e8                  _LcdDataWrite
-                  0x00134c                  _LcdDelay
-                  0x001336                  _LcdInstructionWrite
-                  0x00164e                  _LcdResDot
-                  0x001414                  _LcdSelectSide
-                  0x001404                  _LcdSelectStartline
-                  0x00160a                  _LcdSetDot
-                  0x001364                  _LcdWaitBusy
-                  0x001302                  _ReadLcdData
-                  0x001244                  _SetCS1
-                  0x001224                  _SetCS2
-                  0x0011ca                  _SetE
-                  0x0012c4                  _SetLcdData
-                  0x001206                  _SetRS
-                  0x0011aa                  _SetRST
-                  0x0011e8                  _SetRW
-                  0x001b3a                  _Touch_Panel
-                  0x001b12                  _WriteUART1
-                  0x001c3a                  _WriteUART1dec2string
-                  0x001ba4                  _Write_GLCD
-                  0x001af2                  __ADCInterrupt
-                  0x000198                  __DefaultInterrupt
+                  0x0023d4                  _ADCinit
+                  0x0011ce                  _AD_Xmax
+                  0x0011cc                  _AD_Xmin
+                  0x0011d2                  _AD_Ymax
+                  0x0011d0                  _AD_Ymin
+                  0x0023c6                  _ConfigureADCPins
+                  0x001682                  _ConfigureLCDPins
+                  0x0016b0                  _ConfigureLcdData
+                  0x001f6a                  _ConfigureTSPins
+                  0x001f4e                  _Delay
+                  0x0021c6                  _Delay_ms
+                  0x001ae4                  _GLCD_Circle
+                  0x001914                  _GLCD_ClrScr
+                  0x001ec4                  _GLCD_Clr_Rectangle
+                  0x0019c4                  _GLCD_DisplayPicture
+                  0x00196c                  _GLCD_FillScr
+                  0x00189c                  _GLCD_LcdInit
+                  0x001e0c                  _GLCD_Printf
+                  0x001c58                  _GLCD_Rectangle
+                  0x001e26                  _GLCD_ShowGreed
+                  0x001ce2                  _Glcd_PutChar
+                  0x001d50                  _Glcd_PutCharBig
+                  0x0017bc                  _GoToX
+                  0x001810                  _GoToXY
+                  0x0017f6                  _GoToY
+                  0x00243a                  _Init_T2
+                  0x00186e                  _LcdDataRead
+                  0x0018fe                  _LcdDataWrite
+                  0x001776                  _LcdDelay
+                  0x001760                  _LcdInstructionWrite
+                  0x001a94                  _LcdResDot
+                  0x001834                  _LcdSelectSide
+                  0x001826                  _LcdSelectStartline
+                  0x001a46                  _LcdSetDot
+                  0x001792                  _LcdWaitBusy
+                  0x001724                  _ReadLcdData
+                  0x001666                  _SetCS1
+                  0x00164a                  _SetCS2
+                  0x0015f6                  _SetE
+                  0x0016e4                  _SetLcdData
+                  0x00162e                  _SetRS
+                  0x0015da                  _SetRST
+                  0x001612                  _SetRW
+                  0x001fb6                  _Touch_Panel
+                  0x001f8e                  _WriteUART1
+                  0x002088                  _WriteUART1dec2string
+                  0x002004                  _Write_GLCD
+                  0x0001d0                  __ADCInterrupt
+                  0x000214                  __DefaultInterrupt
                   0xf8000a                  __FGS.sec
-                  0x001d82                  __T2Interrupt
-                  0x001aea                  __U1RXInterrupt
-                  0x00019c                  ___divsf3
-                  0x000220                  ___fixunssfsi
-                  0x00036e                  ___floatdisf
-                  0x000256                  ___floatsisf
-                  0x00038e                  ___floatundisf
-                  0x00025c                  ___floatunsisf
-                  0x000306                  ___mulsf3
-                  0x000136                  __data_init
-                  0x000136                  __data_init_standard
-                  0x0002e6                  __fPropagateNaN
-                  0x0002f8                  __fbopExit
-                  0x000300                  __fbopReturnNaN
-                  0x000260                  __fpack
-                  0x0002ac                  __funpack
-                  0x0002d6                  __funpack2
-                  0x000126                  __psv_init
+                  0x0001e8                  __T2Interrupt
+                  0x0001c8                  __U1RXInterrupt
+                  0x000284                  ___divsf3
+                  0x000284                  ___divsf3x
+                  0x00021a                  ___fixunssfsi
+                  0x000752                  ___floatdisf
+                  0x000250                  ___floatsisf
+                  0x000772                  ___floatundisf
+                  0x000256                  ___floatunsisf
+                  0x000442                  ___mulsf3
+                  0x000442                  ___mulsf3x
+                  0x000152                  __data_init
+                  0x000152                  __data_init_standard
+                  0x00054e                  __dnrmpackf
+                  0x0007d0                  __fpack
+                  0x00025a                  __funpack
+                  0x000634                  __propnanf
+                  0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x001d54                  _detektujPrilaz
-                  0x00099c                  _font
-                  0x0003ec                  _fontBIG
-                  0x001ad0                  _initUART1
-                  0x001d20                  _ispisiFoto
-                  0x001cec                  _ispisiMq3
-                  0x001cbc                  _ispisiPir
-                  0x001f32                  _main
-                  0x001e2a                  _morze
-                  0x001dfe                  _proveriSifru
-                  0x001dc8                  _servo0
-                  0x001dec                  _servo180
-                  0x001dda                  _servo90
-                  0x001328                  _strobe_data
-                  0x000da4                  _tasteri_bmp
+                  0x000416                  __sdivf
+                  0x000646                  __spackf
+                  0x000600                  __typef
+                  0x0005a2                  __unpackdnrmf
+                  0x0006ec                  __unpackf
+                  0x00219c                  _detektujPrilaz
+                  0x000dcc                  _font
+                  0x00081c                  _fontBIG
+                  0x001f74                  _initUART1
+                  0x00216a                  _ispisiFoto
+                  0x002138                  _ispisiMq3
+                  0x00210a                  _ispisiPir
+                  0x00232a                  _main
+                  0x00223a                  _morze
+                  0x002210                  _proveriSifru
+                  0x0021da                  _servo0
+                  0x0021fe                  _servo180
+                  0x0021ec                  _servo90
+                  0x001752                  _strobe_data
+                  0x0011d4                  _tasteri_bmp
 
 Memory Configuration
 
@@ -381,7 +408,7 @@ reset            0x000000           0x000004
 ivt              0x000004           0x00007c  
 _reserved        0x000080           0x000004  
 aivt             0x000084           0x00007c  
-program          0x000100           0x007efe           xr
+program          0x000100           0x007f00           xr
 eedata           0x7ffc00           0x000400  
 FUID0            0x8005c0           0x000002  
 FUID1            0x8005c2           0x000002  
@@ -403,7 +430,8 @@ LOAD build/default/production/Main.o
 LOAD build/default/production/adc.o
 LOAD build/default/production/driverGLCD.o
                     0x0001                  __MPLAB_BUILD = 0x1
-LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a
+LOAD p30F4013
+LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libfx-elf.a
                     0x8005c0                  __FUID0 = 0x8005c0
                     0x8005c2                  __FUID1 = 0x8005c2
                     0x8005c4                  __FUID2 = 0x8005c4
@@ -416,13 +444,14 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp
                     0xf8000a                  __FGS = 0xf8000a
                     0xf8000c                  __FICD = 0xf8000c
                     0x0001                  __NO_HANDLES = 0x1
+                    0x0100                  __CODE_BASE = 0x100
+                    0x7f00                  __CODE_LENGTH = 0x7f00
                     0x0004                  __IVT_BASE = 0x4
                     0x0084                  __AIVT_BASE = 0x84
                     0x0800                  __DATA_BASE = 0x800
                     0x0800                  __DATA_LENGTH = 0x800
                     0x0c00                  __YDATA_BASE = 0xc00
-                    0x0100                  __CODE_BASE = 0x100
-                    0x7f00                  __CODE_LENGTH = 0x7f00
+                    0x0fff                  __YDATA_END = 0xfff
 
 .reset            0x000000          0x4
                   0x000000          0x2 SHORT 0x100 ABSOLUTE (__reset)
@@ -430,59 +459,70 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x2ec
+.text             0x000100        0x71c
  *(.init)
- .init            0x000100         0x36 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+ .init            0x000100         0x4c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
                   0x000100                  __resetPRI
                   0x000100                  __reset
-                  0x000126                  __psv_init
- .init            0x000136         0x5e c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
-                  0x000136                  __data_init_standard
-                  0x000136                  __data_init
+                  0x00013c                  __psv_init
+ .init            0x00014c         0x7c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
+                  0x000152                  __data_init_standard
+                  0x000152                  __data_init
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr             0x000198          0x4 default_isr
-                  0x000198                  __DefaultInterrupt
+ .isr.text        0x0001c8         0x4c build/default/production/Main.o
+                  0x0001c8                  __U1RXInterrupt
+                  0x0001d0                  __ADCInterrupt
+                  0x0001e8                  __T2Interrupt
+ .isr             0x000214          0x4 default_isr
+                  0x000214                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
- .libm.divfs3     0x00019c         0x84 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(divsf3.eo)
-                  0x00019c                  ___divsf3
+ .libpic30_crt_start_mode
+                  0x000218          0x2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
+                  0x000218                  __crt_start_mode
+                  0x000218                  __crt_start_mode_normal
  .libm.fixunssfsi
-                  0x000220         0x36 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
-                  0x000220                  ___fixunssfsi
+                  0x00021a         0x36 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
+                  0x00021a                  ___fixunssfsi
  .libm.floatsisf
-                  0x000256          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
-                  0x000256                  ___floatsisf
+                  0x000250          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
+                  0x000250                  ___floatsisf
  .libm.floatunsisf
-                  0x00025c          0x4 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
-                  0x00025c                  ___floatunsisf
- .libm.fpack      0x000260         0x4c c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fpack.eo)
-                  0x000260                  __fpack
- .libm.funpack    0x0002ac         0x2a c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(funpack.eo)
-                  0x0002ac                  __funpack
- .libm.funpack2
-                  0x0002d6         0x10 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(funpack2.eo)
-                  0x0002d6                  __funpack2
- .libm.fPropagateNaN
-                  0x0002e6         0x12 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(futil.eo)
-                  0x0002e6                  __fPropagateNaN
- .libm.fbobExit
-                  0x0002f8          0x8 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(futil.eo)
-                  0x0002f8                  __fbopExit
- .libm.fbopReturnNaN
-                  0x000300          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(futil.eo)
-                  0x000300                  __fbopReturnNaN
- .libm.mulsf3     0x000306         0x68 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
-                  0x000306                  ___mulsf3
+                  0x000256          0x4 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
+                  0x000256                  ___floatunsisf
+ .libm.funpack    0x00025a         0x2a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+                  0x00025a                  __funpack
+ .libmx           0x000284        0x1be c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o)
+                  0x000284                  ___divsf3x
+                  0x000284                  ___divsf3
+                  0x000416                  __sdivf
+ .libmx           0x000442        0x10c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+                  0x000442                  ___mulsf3x
+                  0x000442                  ___mulsf3
+ .libmx           0x00054e         0x54 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+                  0x00054e                  __dnrmpackf
+ .libmx           0x0005a2         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+                  0x0005a2                  __unpackdnrmf
+ .libmx           0x000600         0x34 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+                  0x000600                  __typef
+ .libmx           0x000634         0x12 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+                  0x000634                  __propnanf
+ .libmx           0x000646         0xa6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.XX_o)
+                  0x000646                  __spackf
+ .libmx           0x0006ec         0x66 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.XX_o)
+                  0x0006ec                  __unpackf
  .libm.floatdisf
-                  0x00036e         0x20 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
-                  0x00036e                  ___floatdisf
+                  0x000752         0x20 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
+                  0x000752                  ___floatdisf
  .libm.floatundisf
-                  0x00038e         0x5e c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
-                  0x00038e                  ___floatundisf
+                  0x000772         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
+                  0x000772                  ___floatundisf
+ .libm.fpack      0x0007d0         0x4c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
+                  0x0007d0                  __fpack
 
 usercode
  *(usercode)
@@ -518,7 +558,8 @@ __RESERVED2
 
 __FGS             0xf8000a          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf8000a          0x2 FGS
+ __FGS.sec        0xf8000a          0x2 /CW/_FGSÀ‡
+
                   0xf8000a                  __FGS.sec
 
 __FICD
@@ -533,41 +574,87 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x361c
+.debug_info       0x000000       0x41c3
  *(.debug_info)
- .debug_info      0x000000        0x531 build/default/production/Tajmeri.o
- .debug_info      0x000531       0x14a7 build/default/production/Main.o
- .debug_info      0x0019d8        0xcd7 build/default/production/adc.o
- .debug_info      0x0026af        0xf6d build/default/production/driverGLCD.o
+ .debug_info      0x000000        0x5cf build/default/production/Tajmeri.o
+ .debug_info      0x0005cf       0x15c2 build/default/production/Main.o
+ .debug_info      0x001b91        0xd75 build/default/production/adc.o
+ .debug_info      0x002906        0xfe3 build/default/production/driverGLCD.o
+ .debug_info      0x0038e9         0x90 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
+ .debug_info      0x003979         0x8f c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
+ .debug_info      0x003a08         0x91 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
+ .debug_info      0x003a99         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_info      0x003b26         0x9d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o)
+ .debug_info      0x003bc3         0x9d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_info      0x003c60         0xa0 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_info      0x003d00         0xa2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_info      0x003da2         0x9c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_info      0x003e3e         0x9f c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_info      0x003edd         0x9d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.XX_o)
+ .debug_info      0x003f7a         0x9e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.XX_o)
+ .debug_info      0x004018         0x8f c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
+ .debug_info      0x0040a7         0x91 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
+ .debug_info      0x004138         0x8b c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x4f7
+.debug_abbrev     0x000000        0x641
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xb8 build/default/production/Tajmeri.o
- .debug_abbrev    0x0000b8        0x20e build/default/production/Main.o
- .debug_abbrev    0x0002c6         0xb8 build/default/production/adc.o
- .debug_abbrev    0x00037e        0x179 build/default/production/driverGLCD.o
+ .debug_abbrev    0x000000         0xc5 build/default/production/Tajmeri.o
+ .debug_abbrev    0x0000c5        0x205 build/default/production/Main.o
+ .debug_abbrev    0x0002ca         0xc5 build/default/production/adc.o
+ .debug_abbrev    0x00038f        0x186 build/default/production/driverGLCD.o
+ .debug_abbrev    0x000515         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
+ .debug_abbrev    0x000529         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
+ .debug_abbrev    0x00053d         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
+ .debug_abbrev    0x000551         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_abbrev    0x000565         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o)
+ .debug_abbrev    0x000579         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_abbrev    0x00058d         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_abbrev    0x0005a1         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_abbrev    0x0005b5         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_abbrev    0x0005c9         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_abbrev    0x0005dd         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.XX_o)
+ .debug_abbrev    0x0005f1         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.XX_o)
+ .debug_abbrev    0x000605         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
+ .debug_abbrev    0x000619         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
+ .debug_abbrev    0x00062d         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
 
-.debug_line       0x000000       0x16e8
+.debug_line       0x000000        0xcf8
  *(.debug_line)
- .debug_line      0x000000         0xd6 build/default/production/Tajmeri.o
- .debug_line      0x0000d6        0x785 build/default/production/Main.o
- .debug_line      0x00085b        0x184 build/default/production/adc.o
- .debug_line      0x0009df        0xd09 build/default/production/driverGLCD.o
+ .debug_line      0x000000         0xe1 build/default/production/Tajmeri.o
+ .debug_line      0x0000e1        0x1c6 build/default/production/Main.o
+ .debug_line      0x0002a7         0xfa build/default/production/adc.o
+ .debug_line      0x0003a1        0x282 build/default/production/driverGLCD.o
+ .debug_line      0x000623         0x53 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
+ .debug_line      0x000676         0x3a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
+ .debug_line      0x0006b0         0x3b c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
+ .debug_line      0x0006eb         0x4a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_line      0x000735        0x124 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o)
+ .debug_line      0x000859         0xcc c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_line      0x000925         0x72 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_line      0x000997         0x7a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_line      0x000a11         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_line      0x000a6f         0x51 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_line      0x000ac0         0x98 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.XX_o)
+ .debug_line      0x000b58         0x79 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.XX_o)
+ .debug_line      0x000bd1         0x1a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(errno.XX_o)
+ .debug_line      0x000beb         0x47 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
+ .debug_line      0x000c32         0x6c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
+ .debug_line      0x000c9e         0x5a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
 
-.debug_frame      0x000000        0x3f0
+.debug_frame      0x000000        0x648
  *(.debug_frame)
- .debug_frame     0x000000         0x24 build/default/production/Tajmeri.o
- .debug_frame     0x000024        0x164 build/default/production/Main.o
- .debug_frame     0x000188         0x34 build/default/production/adc.o
- .debug_frame     0x0001bc        0x234 build/default/production/driverGLCD.o
+ .debug_frame     0x000000         0x2e build/default/production/Tajmeri.o
+ .debug_frame     0x00002e        0x24a build/default/production/Main.o
+ .debug_frame     0x000278         0x48 build/default/production/adc.o
+ .debug_frame     0x0002c0        0x388 build/default/production/driverGLCD.o
 
-.debug_str        0x000000        0x182
+.debug_str        0x000000        0x18c
  *(.debug_str)
  .debug_str       0x000000         0x1c build/default/production/Tajmeri.o
- .debug_str       0x00001c         0xa4 build/default/production/Main.o
- .debug_str       0x0000c0         0x52 build/default/production/adc.o
- .debug_str       0x000112         0x70 build/default/production/driverGLCD.o
+ .debug_str       0x00001c         0xae build/default/production/Main.o
+ .debug_str       0x0000ca         0x52 build/default/production/adc.o
+ .debug_str       0x00011c         0x70 build/default/production/driverGLCD.o
 
 .debug_loc
  *(.debug_loc)
@@ -590,7 +677,7 @@ userdata
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x60
+.debug_aranges    0x000000        0x1c8
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/production/Tajmeri.o
@@ -600,134 +687,36 @@ userdata
                   0x000030         0x18 build/default/production/adc.o
  .debug_aranges
                   0x000048         0x18 build/default/production/driverGLCD.o
-
-.ivt              0x000004         0x7c
-                  0x000004          0x4 LONG 0x198 DEFINED (__ReservedTrap0)?ABSOLUTE (__ReservedTrap0):ABSOLUTE (__DefaultInterrupt)
-                  0x000006          0x4 LONG 0x198 DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
-                  0x000008          0x4 LONG 0x198 DEFINED (__AddressError)?ABSOLUTE (__AddressError):ABSOLUTE (__DefaultInterrupt)
-                  0x00000a          0x4 LONG 0x198 DEFINED (__StackError)?ABSOLUTE (__StackError):ABSOLUTE (__DefaultInterrupt)
-                  0x00000c          0x4 LONG 0x198 DEFINED (__MathError)?ABSOLUTE (__MathError):ABSOLUTE (__DefaultInterrupt)
-                  0x00000e          0x4 LONG 0x198 DEFINED (__ReservedTrap5)?ABSOLUTE (__ReservedTrap5):ABSOLUTE (__DefaultInterrupt)
-                  0x000010          0x4 LONG 0x198 DEFINED (__ReservedTrap6)?ABSOLUTE (__ReservedTrap6):ABSOLUTE (__DefaultInterrupt)
-                  0x000012          0x4 LONG 0x198 DEFINED (__ReservedTrap7)?ABSOLUTE (__ReservedTrap7):ABSOLUTE (__DefaultInterrupt)
-                  0x000014          0x4 LONG 0x198 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000016          0x4 LONG 0x198 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000018          0x4 LONG 0x198 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x198 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001c          0x4 LONG 0x198 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001e          0x4 LONG 0x198 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000020          0x4 LONG 0x1d82 DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000022          0x4 LONG 0x198 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000024          0x4 LONG 0x198 DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000026          0x4 LONG 0x1aea DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000028          0x4 LONG 0x198 DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002a          0x4 LONG 0x1af2 DEFINED (__ADCInterrupt)?ABSOLUTE (__ADCInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002c          0x4 LONG 0x198 DEFINED (__NVMInterrupt)?ABSOLUTE (__NVMInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002e          0x4 LONG 0x198 DEFINED (__SI2CInterrupt)?ABSOLUTE (__SI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000030          0x4 LONG 0x198 DEFINED (__MI2CInterrupt)?ABSOLUTE (__MI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000032          0x4 LONG 0x198 DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000034          0x4 LONG 0x198 DEFINED (__INT1Interrupt)?ABSOLUTE (__INT1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000036          0x4 LONG 0x198 DEFINED (__IC7Interrupt)?ABSOLUTE (__IC7Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000038          0x4 LONG 0x198 DEFINED (__IC8Interrupt)?ABSOLUTE (__IC8Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00003a          0x4 LONG 0x198 DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00003c          0x4 LONG 0x198 DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00003e          0x4 LONG 0x198 DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000040          0x4 LONG 0x198 DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000042          0x4 LONG 0x198 DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000044          0x4 LONG 0x198 DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000046          0x4 LONG 0x198 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000048          0x4 LONG 0x198 DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004a          0x4 LONG 0x198 DEFINED (__C1Interrupt)?ABSOLUTE (__C1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004c          0x4 LONG 0x198 DEFINED (__IC3Interrupt)?ABSOLUTE (__IC3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004e          0x4 LONG 0x198 DEFINED (__IC4Interrupt)?ABSOLUTE (__IC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000050          0x4 LONG 0x198 DEFINED (__IC5Interrupt)?ABSOLUTE (__IC5Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000052          0x4 LONG 0x198 DEFINED (__IC6Interrupt)?ABSOLUTE (__IC6Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000054          0x4 LONG 0x198 DEFINED (__OC5Interrupt)?ABSOLUTE (__OC5Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000056          0x4 LONG 0x198 DEFINED (__OC6Interrupt)?ABSOLUTE (__OC6Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000058          0x4 LONG 0x198 DEFINED (__OC7Interrupt)?ABSOLUTE (__OC7Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00005a          0x4 LONG 0x198 DEFINED (__OC8Interrupt)?ABSOLUTE (__OC8Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00005c          0x4 LONG 0x198 DEFINED (__INT3Interrupt)?ABSOLUTE (__INT3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00005e          0x4 LONG 0x198 DEFINED (__INT4Interrupt)?ABSOLUTE (__INT4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000060          0x4 LONG 0x198 DEFINED (__C2Interrupt)?ABSOLUTE (__C2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000062          0x4 LONG 0x198 DEFINED (__PWMInterrupt)?ABSOLUTE (__PWMInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000064          0x4 LONG 0x198 DEFINED (__QEIInterrupt)?ABSOLUTE (__QEIInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000066          0x4 LONG 0x198 DEFINED (__DCIInterrupt)?ABSOLUTE (__DCIInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000068          0x4 LONG 0x198 DEFINED (__LVDInterrupt)?ABSOLUTE (__LVDInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00006a          0x4 LONG 0x198 DEFINED (__FLTAInterrupt)?ABSOLUTE (__FLTAInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00006c          0x4 LONG 0x198 DEFINED (__FLTBInterrupt)?ABSOLUTE (__FLTBInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00006e          0x4 LONG 0x198 DEFINED (__Interrupt45)?ABSOLUTE (__Interrupt45):ABSOLUTE (__DefaultInterrupt)
-                  0x000070          0x4 LONG 0x198 DEFINED (__Interrupt46)?ABSOLUTE (__Interrupt46):ABSOLUTE (__DefaultInterrupt)
-                  0x000072          0x4 LONG 0x198 DEFINED (__Interrupt47)?ABSOLUTE (__Interrupt47):ABSOLUTE (__DefaultInterrupt)
-                  0x000074          0x4 LONG 0x198 DEFINED (__Interrupt48)?ABSOLUTE (__Interrupt48):ABSOLUTE (__DefaultInterrupt)
-                  0x000076          0x4 LONG 0x198 DEFINED (__Interrupt49)?ABSOLUTE (__Interrupt49):ABSOLUTE (__DefaultInterrupt)
-                  0x000078          0x4 LONG 0x198 DEFINED (__Interrupt50)?ABSOLUTE (__Interrupt50):ABSOLUTE (__DefaultInterrupt)
-                  0x00007a          0x4 LONG 0x198 DEFINED (__Interrupt51)?ABSOLUTE (__Interrupt51):ABSOLUTE (__DefaultInterrupt)
-                  0x00007c          0x4 LONG 0x198 DEFINED (__Interrupt52)?ABSOLUTE (__Interrupt52):ABSOLUTE (__DefaultInterrupt)
-                  0x00007e          0x4 LONG 0x198 DEFINED (__Interrupt53)?ABSOLUTE (__Interrupt53):ABSOLUTE (__DefaultInterrupt)
-
-.aivt             0x000084         0x7c
-                  0x000084          0x4 LONG 0x198 DEFINED (__AltReservedTrap0)?ABSOLUTE (__AltReservedTrap0):DEFINED (__ReservedTrap0)?ABSOLUTE (__ReservedTrap0):ABSOLUTE (__DefaultInterrupt)
-                  0x000086          0x4 LONG 0x198 DEFINED (__AltOscillatorFail)?ABSOLUTE (__AltOscillatorFail):DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
-                  0x000088          0x4 LONG 0x198 DEFINED (__AltAddressError)?ABSOLUTE (__AltAddressError):DEFINED (__AddressError)?ABSOLUTE (__AddressError):ABSOLUTE (__DefaultInterrupt)
-                  0x00008a          0x4 LONG 0x198 DEFINED (__AltStackError)?ABSOLUTE (__AltStackError):DEFINED (__StackError)?ABSOLUTE (__StackError):ABSOLUTE (__DefaultInterrupt)
-                  0x00008c          0x4 LONG 0x198 DEFINED (__AltMathError)?ABSOLUTE (__AltMathError):DEFINED (__MathError)?ABSOLUTE (__MathError):ABSOLUTE (__DefaultInterrupt)
-                  0x00008e          0x4 LONG 0x198 DEFINED (__AltReservedTrap5)?ABSOLUTE (__AltReservedTrap5):DEFINED (__ReservedTrap5)?ABSOLUTE (__ReservedTrap5):ABSOLUTE (__DefaultInterrupt)
-                  0x000090          0x4 LONG 0x198 DEFINED (__AltReservedTrap6)?ABSOLUTE (__AltReservedTrap6):DEFINED (__ReservedTrap6)?ABSOLUTE (__ReservedTrap6):ABSOLUTE (__DefaultInterrupt)
-                  0x000092          0x4 LONG 0x198 DEFINED (__AltReservedTrap7)?ABSOLUTE (__AltReservedTrap7):DEFINED (__ReservedTrap7)?ABSOLUTE (__ReservedTrap7):ABSOLUTE (__DefaultInterrupt)
-                  0x000094          0x4 LONG 0x198 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000096          0x4 LONG 0x198 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000098          0x4 LONG 0x198 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00009a          0x4 LONG 0x198 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00009c          0x4 LONG 0x198 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00009e          0x4 LONG 0x198 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000a0          0x4 LONG 0x1d82 DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000a2          0x4 LONG 0x198 DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000a4          0x4 LONG 0x198 DEFINED (__AltSPI1Interrupt)?ABSOLUTE (__AltSPI1Interrupt):DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000a6          0x4 LONG 0x1aea DEFINED (__AltU1RXInterrupt)?ABSOLUTE (__AltU1RXInterrupt):DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000a8          0x4 LONG 0x198 DEFINED (__AltU1TXInterrupt)?ABSOLUTE (__AltU1TXInterrupt):DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000aa          0x4 LONG 0x1af2 DEFINED (__AltADCInterrupt)?ABSOLUTE (__AltADCInterrupt):DEFINED (__ADCInterrupt)?ABSOLUTE (__ADCInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ac          0x4 LONG 0x198 DEFINED (__AltNVMInterrupt)?ABSOLUTE (__AltNVMInterrupt):DEFINED (__NVMInterrupt)?ABSOLUTE (__NVMInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ae          0x4 LONG 0x198 DEFINED (__AltSI2CInterrupt)?ABSOLUTE (__AltSI2CInterrupt):DEFINED (__SI2CInterrupt)?ABSOLUTE (__SI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000b0          0x4 LONG 0x198 DEFINED (__AltMI2CInterrupt)?ABSOLUTE (__AltMI2CInterrupt):DEFINED (__MI2CInterrupt)?ABSOLUTE (__MI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000b2          0x4 LONG 0x198 DEFINED (__AltCNInterrupt)?ABSOLUTE (__AltCNInterrupt):DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000b4          0x4 LONG 0x198 DEFINED (__AltINT1Interrupt)?ABSOLUTE (__AltINT1Interrupt):DEFINED (__INT1Interrupt)?ABSOLUTE (__INT1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000b6          0x4 LONG 0x198 DEFINED (__AltIC7Interrupt)?ABSOLUTE (__AltIC7Interrupt):DEFINED (__IC7Interrupt)?ABSOLUTE (__IC7Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000b8          0x4 LONG 0x198 DEFINED (__AltIC8Interrupt)?ABSOLUTE (__AltIC8Interrupt):DEFINED (__IC8Interrupt)?ABSOLUTE (__IC8Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ba          0x4 LONG 0x198 DEFINED (__AltOC3Interrupt)?ABSOLUTE (__AltOC3Interrupt):DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000bc          0x4 LONG 0x198 DEFINED (__AltOC4Interrupt)?ABSOLUTE (__AltOC4Interrupt):DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000be          0x4 LONG 0x198 DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000c0          0x4 LONG 0x198 DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000c2          0x4 LONG 0x198 DEFINED (__AltINT2Interrupt)?ABSOLUTE (__AltINT2Interrupt):DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000c4          0x4 LONG 0x198 DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000c6          0x4 LONG 0x198 DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000c8          0x4 LONG 0x198 DEFINED (__AltSPI2Interrupt)?ABSOLUTE (__AltSPI2Interrupt):DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ca          0x4 LONG 0x198 DEFINED (__AltC1Interrupt)?ABSOLUTE (__AltC1Interrupt):DEFINED (__C1Interrupt)?ABSOLUTE (__C1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000cc          0x4 LONG 0x198 DEFINED (__AltIC3Interrupt)?ABSOLUTE (__AltIC3Interrupt):DEFINED (__IC3Interrupt)?ABSOLUTE (__IC3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ce          0x4 LONG 0x198 DEFINED (__AltIC4Interrupt)?ABSOLUTE (__AltIC4Interrupt):DEFINED (__IC4Interrupt)?ABSOLUTE (__IC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000d0          0x4 LONG 0x198 DEFINED (__AltIC5Interrupt)?ABSOLUTE (__AltIC5Interrupt):DEFINED (__IC5Interrupt)?ABSOLUTE (__IC5Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000d2          0x4 LONG 0x198 DEFINED (__AltIC6Interrupt)?ABSOLUTE (__AltIC6Interrupt):DEFINED (__IC6Interrupt)?ABSOLUTE (__IC6Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000d4          0x4 LONG 0x198 DEFINED (__AltOC5Interrupt)?ABSOLUTE (__AltOC5Interrupt):DEFINED (__OC5Interrupt)?ABSOLUTE (__OC5Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000d6          0x4 LONG 0x198 DEFINED (__AltOC6Interrupt)?ABSOLUTE (__AltOC6Interrupt):DEFINED (__OC6Interrupt)?ABSOLUTE (__OC6Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000d8          0x4 LONG 0x198 DEFINED (__AltOC7Interrupt)?ABSOLUTE (__AltOC7Interrupt):DEFINED (__OC7Interrupt)?ABSOLUTE (__OC7Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000da          0x4 LONG 0x198 DEFINED (__AltOC8Interrupt)?ABSOLUTE (__AltOC8Interrupt):DEFINED (__OC8Interrupt)?ABSOLUTE (__OC8Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000dc          0x4 LONG 0x198 DEFINED (__AltINT3Interrupt)?ABSOLUTE (__AltINT3Interrupt):DEFINED (__INT3Interrupt)?ABSOLUTE (__INT3Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000de          0x4 LONG 0x198 DEFINED (__AltINT4Interrupt)?ABSOLUTE (__AltINT4Interrupt):DEFINED (__INT4Interrupt)?ABSOLUTE (__INT4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000e0          0x4 LONG 0x198 DEFINED (__AltC2Interrupt)?ABSOLUTE (__AltC2Interrupt):DEFINED (__C2Interrupt)?ABSOLUTE (__C2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000e2          0x4 LONG 0x198 DEFINED (__AltPWMInterrupt)?ABSOLUTE (__AltPWMInterrupt):DEFINED (__PWMInterrupt)?ABSOLUTE (__PWMInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000e4          0x4 LONG 0x198 DEFINED (__AltQEIInterrupt)?ABSOLUTE (__AltQEIInterrupt):DEFINED (__QEIInterrupt)?ABSOLUTE (__QEIInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000e6          0x4 LONG 0x198 DEFINED (__AltDCIInterrupt)?ABSOLUTE (__AltDCIInterrupt):DEFINED (__DCIInterrupt)?ABSOLUTE (__DCIInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000e8          0x4 LONG 0x198 DEFINED (__AltLVDInterrupt)?ABSOLUTE (__AltLVDInterrupt):DEFINED (__LVDInterrupt)?ABSOLUTE (__LVDInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ea          0x4 LONG 0x198 DEFINED (__AltFLTAInterrupt)?ABSOLUTE (__AltFLTAInterrupt):DEFINED (__FLTAInterrupt)?ABSOLUTE (__FLTAInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ec          0x4 LONG 0x198 DEFINED (__AltFLTBInterrupt)?ABSOLUTE (__AltFLTBInterrupt):DEFINED (__FLTBInterrupt)?ABSOLUTE (__FLTBInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000ee          0x4 LONG 0x198 DEFINED (__AltInterrupt45)?ABSOLUTE (__AltInterrupt45):DEFINED (__Interrupt45)?ABSOLUTE (__Interrupt45):ABSOLUTE (__DefaultInterrupt)
-                  0x0000f0          0x4 LONG 0x198 DEFINED (__AltInterrupt46)?ABSOLUTE (__AltInterrupt46):DEFINED (__Interrupt46)?ABSOLUTE (__Interrupt46):ABSOLUTE (__DefaultInterrupt)
-                  0x0000f2          0x4 LONG 0x198 DEFINED (__AltInterrupt47)?ABSOLUTE (__AltInterrupt47):DEFINED (__Interrupt47)?ABSOLUTE (__Interrupt47):ABSOLUTE (__DefaultInterrupt)
-                  0x0000f4          0x4 LONG 0x198 DEFINED (__AltInterrupt48)?ABSOLUTE (__AltInterrupt48):DEFINED (__Interrupt48)?ABSOLUTE (__Interrupt48):ABSOLUTE (__DefaultInterrupt)
-                  0x0000f6          0x4 LONG 0x198 DEFINED (__AltInterrupt49)?ABSOLUTE (__AltInterrupt49):DEFINED (__Interrupt49)?ABSOLUTE (__Interrupt49):ABSOLUTE (__DefaultInterrupt)
-                  0x0000f8          0x4 LONG 0x198 DEFINED (__AltInterrupt50)?ABSOLUTE (__AltInterrupt50):DEFINED (__Interrupt50)?ABSOLUTE (__Interrupt50):ABSOLUTE (__DefaultInterrupt)
-                  0x0000fa          0x4 LONG 0x198 DEFINED (__AltInterrupt51)?ABSOLUTE (__AltInterrupt51):DEFINED (__Interrupt51)?ABSOLUTE (__Interrupt51):ABSOLUTE (__DefaultInterrupt)
-                  0x0000fc          0x4 LONG 0x198 DEFINED (__AltInterrupt52)?ABSOLUTE (__AltInterrupt52):DEFINED (__Interrupt52)?ABSOLUTE (__Interrupt52):ABSOLUTE (__DefaultInterrupt)
-                  0x0000fe          0x4 LONG 0x198 DEFINED (__AltInterrupt53)?ABSOLUTE (__AltInterrupt53):DEFINED (__Interrupt53)?ABSOLUTE (__Interrupt53):ABSOLUTE (__DefaultInterrupt)
+ .debug_aranges
+                  0x000060         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
+ .debug_aranges
+                  0x000078         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
+ .debug_aranges
+                  0x000090         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
+ .debug_aranges
+                  0x0000a8         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_aranges
+                  0x0000c0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.XX_o)
+ .debug_aranges
+                  0x0000d8         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_aranges
+                  0x0000f0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_aranges
+                  0x000108         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_aranges
+                  0x000120         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_aranges
+                  0x000138         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_aranges
+                  0x000150         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.XX_o)
+ .debug_aranges
+                  0x000168         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.XX_o)
+ .debug_aranges
+                  0x000180         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
+ .debug_aranges
+                  0x000198         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
+ .debug_aranges
+                  0x0001b0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1422,67 +1411,60 @@ userdata
                     0x0216                  UART2 = 0x216
                     0x0216                  _UART2 = 0x216
 START GROUP
-LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfx-elf.a
-LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a
-LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a
-LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a
+LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a
+LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libm-elf.a
+LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/default/production/Tajmer_GLCD.X.production.elf elf32-pic30)
-LOAD FGS
-LOAD jump_table
+LOAD /CW/_FGSÀ‡
+
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000060        0x34d
+                  0x0001c8        0x3a0
  .debug_pubtypes
-                  0x000060         0x6b build/default/production/Tajmeri.o
+                  0x0001c8         0x78 build/default/production/Tajmeri.o
  .debug_pubtypes
-                  0x0000cb        0x144 build/default/production/Main.o
+                  0x000240        0x170 build/default/production/Main.o
  .debug_pubtypes
-                  0x00020f        0x10e build/default/production/adc.o
+                  0x0003b0        0x11b build/default/production/adc.o
  .debug_pubtypes
-                  0x00031d         0x90 build/default/production/driverGLCD.o
+                  0x0004cb         0x9d build/default/production/driverGLCD.o
 
 __c30_signature
-                  0x0003ae         0x66
+                  0x000568         0x54
  __c30_signature
-                  0x0003ae          0x6 build/default/production/Tajmeri.o
+                  0x000568          0x6 build/default/production/Tajmeri.o
  __c30_signature
-                  0x0003b4          0x6 build/default/production/Main.o
+                  0x00056e          0x6 build/default/production/Main.o
  __c30_signature
-                  0x0003ba          0x6 build/default/production/adc.o
+                  0x000574          0x6 build/default/production/adc.o
  __c30_signature
-                  0x0003c0          0x6 build/default/production/driverGLCD.o
+                  0x00057a          0x6 build/default/production/driverGLCD.o
  __c30_signature
-                  0x0003c6          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x000580          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x0003cc          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x000586          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x0003d2          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+                  0x00058c          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.XX_o)
  __c30_signature
-                  0x0003d8          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
+                  0x000592          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.XX_o)
  __c30_signature
-                  0x0003de          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+                  0x000598          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.XX_o)
  __c30_signature
-                  0x0003e4          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x00059e          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
  __c30_signature
-                  0x0003ea          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x0005a4          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(errno.XX_o)
  __c30_signature
-                  0x0003f0          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x0005aa          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.XX_o)
  __c30_signature
-                  0x0003f6          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x0005b0          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.XX_o)
  __c30_signature
-                  0x0003fc          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(futil.eo)
- __c30_signature
-                  0x000402          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
- __c30_signature
-                  0x000408          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
- __c30_signature
-                  0x00040e          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x0005b6          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.XX_o)
 
-.nbss               0x0800         0x38
- .nbss              0x0800         0x38 build/default/production/Main.o
+.nbss               0x0800         0x42
+ .nbss              0x0800         0x3c build/default/production/Main.o
                     0x0800                  _sirovi0
                     0x0802                  _sirovi1
                     0x0804                  _broj
@@ -1504,98 +1486,107 @@ __c30_signature
                     0x0824                  _stoperica
                     0x0826                  _ms
                     0x0828                  _sekund
-                    0x082a                  _x
-                    0x082c                  _niz
-                    0x0832                  _sifra
-                    0x0835                  _sifraProvera
-                    0x0836                  _y
+                    0x082a                  _morzeI
+                    0x082c                  _morzeBrojac
+                    0x082e                  _x
+                    0x0830                  _niz
+                    0x0836                  _sifra
+                    0x0839                  _sifraProvera
+                    0x083a                  _r
+                    0x083b                  _y
+ .nbss              0x083c          0x4 build/default/production/driverGLCD.o
+                    0x083c                  _kursorX
+                    0x083d                  _kursorY
+                    0x083e                  _strana
+ .nbss              0x0840          0x2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(errno.XX_o)
+                    0x0840                  _errno
 
-.ndata              0x0838          0xa
- .ndata             0x0838          0x6 build/default/production/Main.o
-                    0x0838                  _morzeI
-                    0x083a                  _morzeBrojac
-                    0x083c                  _r
- .ndata             0x083e          0x4 build/default/production/driverGLCD.o
-                    0x083e                  _kursorX
-                    0x083f                  _kursorY
-                    0x0840                  _strana
+.ivt._U1RXInterrupt
+                  0x000026          0x2
+ .ivt._U1RXInterrupt
+                  0x000026          0x2 build/default/production/Main.o
 
-.const              0x83ec        0xdbe load address 0x0003ec  
- .const             0x83ec        0x9b0 build/default/production/driverGLCD.o
-                    0x83ec                  _fontBIG
-                    0x899c                  _font
- .const             0x8d9c        0x40e build/default/production/Main.o
-                    0x8d9c                  _AD_Xmin
-                    0x8d9e                  _AD_Xmax
-                    0x8da0                  _AD_Ymin
-                    0x8da2                  _AD_Ymax
-                    0x8da4                  _tasteri_bmp
+.ivt._ADCInterrupt
+                  0x00002a          0x2
+ .ivt._ADCInterrupt
+                  0x00002a          0x2 build/default/production/Main.o
 
-.text             0x0011aa        0xeaa
- .text            0x0011aa        0x91c build/default/production/driverGLCD.o
-                  0x0011aa                  _SetRST
-                  0x0011ca                  _SetE
-                  0x0011e8                  _SetRW
-                  0x001206                  _SetRS
-                  0x001224                  _SetCS2
-                  0x001244                  _SetCS1
-                  0x001262                  _ConfigureLCDPins
-                  0x001290                  _ConfigureLcdData
-                  0x0012c4                  _SetLcdData
-                  0x001302                  _ReadLcdData
-                  0x001328                  _strobe_data
-                  0x001336                  _LcdInstructionWrite
-                  0x00134c                  _LcdDelay
-                  0x001364                  _LcdWaitBusy
-                  0x001392                  _GoToX
-                  0x0013d8                  _GoToY
-                  0x0013f2                  _GoToXY
-                  0x001404                  _LcdSelectStartline
-                  0x001414                  _LcdSelectSide
-                  0x001454                  _LcdDataRead
-                  0x001486                  _GLCD_LcdInit
-                  0x0014e8                  _LcdDataWrite
-                  0x0014fe                  _GLCD_ClrScr
-                  0x00154a                  _GLCD_FillScr
-                  0x001596                  _GLCD_DisplayPicture
-                  0x00160a                  _LcdSetDot
-                  0x00164e                  _LcdResDot
-                  0x001694                  _GLCD_Circle
-                  0x0017b8                  _GLCD_Rectangle
-                  0x00182a                  _Glcd_PutChar
-                  0x0018ba                  _Glcd_PutCharBig
-                  0x0019b0                  _GLCD_Printf
-                  0x0019cc                  _GLCD_ShowGreed
-                  0x001a54                  _GLCD_Clr_Rectangle
- .text            0x001ac6        0x50a build/default/production/Main.o
-                  0x001ac6                  _ConfigureTSPins
-                  0x001ad0                  _initUART1
-                  0x001aea                  __U1RXInterrupt
-                  0x001af2                  __ADCInterrupt
-                  0x001b12                  _WriteUART1
-                  0x001b3a                  _Touch_Panel
-                  0x001ba4                  _Write_GLCD
-                  0x001c22                  _Delay
-                  0x001c3a                  _WriteUART1dec2string
-                  0x001cbc                  _ispisiPir
-                  0x001cec                  _ispisiMq3
-                  0x001d20                  _ispisiFoto
-                  0x001d54                  _detektujPrilaz
-                  0x001d82                  __T2Interrupt
-                  0x001db2                  _Delay_ms
-                  0x001dc8                  _servo0
-                  0x001dda                  _servo90
-                  0x001dec                  _servo180
-                  0x001dfe                  _proveriSifru
-                  0x001e2a                  _morze
-                  0x001f32                  _main
- .text            0x001fd0         0x84 build/default/production/adc.o
-                  0x001fd0                  _ConfigureADCPins
-                  0x001fde                  _ADCinit
+.ivt._T2Interrupt
+                  0x000020          0x2
+ .ivt._T2Interrupt
+                  0x000020          0x2 build/default/production/Main.o
 
-.dinit            0x002054         0x1c
- .dinit           0x002054         0x1c data_init
+.const              0x881c        0xdbe load address 0x00081c  
+ .const             0x881c        0x9b0 build/default/production/driverGLCD.o
+                    0x881c                  _fontBIG
+                    0x8dcc                  _font
+ .const             0x91cc        0x40e build/default/production/Main.o
+                    0x91cc                  _AD_Xmin
+                    0x91ce                  _AD_Xmax
+                    0x91d0                  _AD_Ymin
+                    0x91d2                  _AD_Ymax
+                    0x91d4                  _tasteri_bmp
 
-.text             0x002070         0x16
- .text            0x002070         0x16 build/default/production/Tajmeri.o
-                  0x002070                  _Init_T2
+.text             0x0015da        0xe74
+ .text            0x0015da        0x974 build/default/production/driverGLCD.o
+                  0x0015da                  _SetRST
+                  0x0015f6                  _SetE
+                  0x001612                  _SetRW
+                  0x00162e                  _SetRS
+                  0x00164a                  _SetCS2
+                  0x001666                  _SetCS1
+                  0x001682                  _ConfigureLCDPins
+                  0x0016b0                  _ConfigureLcdData
+                  0x0016e4                  _SetLcdData
+                  0x001724                  _ReadLcdData
+                  0x001752                  _strobe_data
+                  0x001760                  _LcdInstructionWrite
+                  0x001776                  _LcdDelay
+                  0x001792                  _LcdWaitBusy
+                  0x0017bc                  _GoToX
+                  0x0017f6                  _GoToY
+                  0x001810                  _GoToXY
+                  0x001826                  _LcdSelectStartline
+                  0x001834                  _LcdSelectSide
+                  0x00186e                  _LcdDataRead
+                  0x00189c                  _GLCD_LcdInit
+                  0x0018fe                  _LcdDataWrite
+                  0x001914                  _GLCD_ClrScr
+                  0x00196c                  _GLCD_FillScr
+                  0x0019c4                  _GLCD_DisplayPicture
+                  0x001a46                  _LcdSetDot
+                  0x001a94                  _LcdResDot
+                  0x001ae4                  _GLCD_Circle
+                  0x001c58                  _GLCD_Rectangle
+                  0x001ce2                  _Glcd_PutChar
+                  0x001d50                  _Glcd_PutCharBig
+                  0x001e0c                  _GLCD_Printf
+                  0x001e26                  _GLCD_ShowGreed
+                  0x001ec4                  _GLCD_Clr_Rectangle
+ .text            0x001f4e        0x478 build/default/production/Main.o
+                  0x001f4e                  _Delay
+                  0x001f6a                  _ConfigureTSPins
+                  0x001f74                  _initUART1
+                  0x001f8e                  _WriteUART1
+                  0x001fb6                  _Touch_Panel
+                  0x002004                  _Write_GLCD
+                  0x002088                  _WriteUART1dec2string
+                  0x00210a                  _ispisiPir
+                  0x002138                  _ispisiMq3
+                  0x00216a                  _ispisiFoto
+                  0x00219c                  _detektujPrilaz
+                  0x0021c6                  _Delay_ms
+                  0x0021da                  _servo0
+                  0x0021ec                  _servo90
+                  0x0021fe                  _servo180
+                  0x002210                  _proveriSifru
+                  0x00223a                  _morze
+                  0x00232a                  _main
+ .text            0x0023c6         0x74 build/default/production/adc.o
+                  0x0023c6                  _ConfigureADCPins
+                  0x0023d4                  _ADCinit
+ .text            0x00243a         0x14 build/default/production/Tajmeri.o
+                  0x00243a                  _Init_T2
+
+.dinit            0x00244e         0x14
+ .dinit           0x00244e         0x14 data_init

@@ -114,6 +114,13 @@ unsigned char const tasteri_bmp[1024] = {
    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 
 };
 
+
+void Delay(unsigned int N)
+{
+	unsigned int i;
+	for(i=0;i<N;i++);
+}
+
 void ConfigureTSPins(void)
 {
 	//ADPCFGbits.PCFG10=1;
@@ -150,19 +157,18 @@ void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void)
 
 void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void) 
 {
-      	
+   /*   	
 	sirovi0=ADCBUF0;//0
 	sirovi1=ADCBUF1;//1
 
 	temp0=sirovi0;
 	temp1=sirovi1;
-    
-/*   
+    */   
 	pir=ADCBUF0;
 	mq3=ADCBUF1;
 	foto=ADCBUF2;									
-*/
-    foto=ADCBUF2;	
+
+    /*foto=ADCBUF2;	*/
     IFS0bits.ADIF = 0;
 } 
 
@@ -244,13 +250,6 @@ temp=data/10;
 Glcd_PutChar(temp+'0');
 data=data-temp*10;
 Glcd_PutChar(data+'0');
-}
-
-
-void Delay(unsigned int N)
-{
-	unsigned int i;
-	for(i=0;i<N;i++);
 }
 
 void WriteUART1dec2string(unsigned int data)
@@ -424,13 +423,12 @@ bool morze()
 int main(int argc, char** argv) {
     
     for(broj1=0;broj1<10000;broj1++);
-/*
-		TRISBbits.TRISB0=1;//ulazni pin pir
-		TRISBbits.TRISB1=1;//ulazni pin mq3
+    
+		TRISBbits.TRISB8=1;//ulazni pin pir
+		TRISBbits.TRISB9=1;//ulazni pin mq3
         TRISBbits.TRISB12=1;//ulazni pin fotootpornik
-        TRISBbits.TRISB5=0;//izlazni pin
-*/
-        TRISBbits.TRISB12=1;//ulazni pin fotootpornik
+        TRISDbits.TRISD0=0;//izlazni pin
+        
 		for(broj=0;broj<60000;broj++);
 
         ConfigureLCDPins();
