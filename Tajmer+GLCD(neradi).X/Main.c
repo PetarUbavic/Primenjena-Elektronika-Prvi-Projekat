@@ -41,7 +41,7 @@ unsigned int x;
 unsigned int niz[3];
 unsigned char sifra[3];
 unsigned char sifraProvera;
-char r=0;
+char r=1;
 bool y;
 
 /***************************************************************************
@@ -51,7 +51,7 @@ bool y;
 * Povratna vrednost : Nema                                                 *
 ***************************************************************************/
 
-unsigned char const tasteri_bmp[1024] = {
+unsigned char /*const*/ tasteri_bmp[1024] = {
    0,  0,  0,  0,  0,  0,  0,240, 16, 16, 16, 16, 16, 16, 16, 16, 
   16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
   16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,240,  0,  0,  0,  0, 
@@ -141,10 +141,10 @@ void ConfigureTSPins(void)
 void initUART1(void)
 {
     //OVO JE KOPIRANO IZ Touch screen.X
-    // U1BRG=0x0015;//ovim odredjujemo baudrate
+    U1BRG=0x0015;//ovim odredjujemo baudrate
     U1MODEbits.ALTIO=0;//biramo koje pinove koristimo za komunikaciju osnovne ili alternativne
 
-    U1BRG=0x0040;//baud rate 9600
+    //U1BRG=0x0040;//baud rate 9600
     // U1MODEbits.ALTIO = 1; //OVO JE NA 1 ZA UART
     IEC0bits.U1RXIE = 1;
     U1STA&=0xfffc;
@@ -158,19 +158,17 @@ void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void)
 } 
 
 void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void) 
-{
-   /*   	
-	sirovi0=ADCBUF0;//0
-	sirovi1=ADCBUF1;//1
+{   	
+	sirovi0=ADCBUF2;//0
+	sirovi1=ADCBUF3;//1
 
 	temp0=sirovi0;
 	temp1=sirovi1;
-    */   
+       
 	pir=ADCBUF0;
 	mq3=ADCBUF1;
-	foto=ADCBUF2;									
+    foto=ADCBUF4;									
 
-    /*foto=ADCBUF2;	*/
     IFS0bits.ADIF = 0;
 } 
 
@@ -181,6 +179,13 @@ void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void)
 * Parameteri        : unsigned int data-podatak koji zelimo poslati  *
 * Povratna vrednost : Nema                                           *
 *********************************************************************/
+
+void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
+	{
+		stoperica = 0;
+		while(stoperica < vreme);
+	}
+
 
 void WriteUART1(unsigned int data)
 {
@@ -205,7 +210,7 @@ void Touch_Panel (void)
      LATCbits.LATC13=1;
      LATCbits.LATC14=0;
 
-	Delay(500); //cekamo jedno vreme da se odradi AD konverzija
+	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija
 				
 	// ocitavamo x	
 	x_vrednost = temp0;//temp0 je vrednost koji nam daje AD konvertor na BOTTOM pinu		
@@ -216,7 +221,7 @@ void Touch_Panel (void)
 	DRIVE_A = 0;  
 	DRIVE_B = 1;
 
-	Delay(500); //cekamo jedno vreme da se odradi AD konverzija
+	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija
 	
 	// ocitavamo y	
 	y_vrednost = temp1;// temp1 je vrednost koji nam daje AD konvertor na LEFT pinu	
@@ -324,11 +329,6 @@ void __attribute__ ((__interrupt__, no_auto_psv)) _T2Interrupt(void) // svakih 1
 }
 
 
-void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
-	{
-		stoperica = 0;
-		while(stoperica < vreme);
-	}
 
 void servo0()
 {
@@ -377,7 +377,7 @@ bool proveriSifru()
 
 bool morze()
 {
-    if(foto > 1000) // mozda treba while / do while
+  lstart:  if(foto > 1000) // mozda treba while / do while
     {
         Delay_ms(100); //sacekaj 10ms
         morzeI++; //povecaj morzeI (neki brojac), ako je npr morzeI = 10, to znaci da je svetlosni impuls trajao 100ms
@@ -423,37 +423,48 @@ bool morze()
             morzeBrojac = 0;     
         }
         ////////////////////////
-    }
+    } 
     
+    goto lstart;
 }
 
 
 /*
  * 
  */
+int reg=1;
+void Taster5()
+{
+    if ((17<X)&&(X<44)&& (47<Y)&&(Y<55))
+        { 
+        reg=0;
+        }// korak pwm=5%
+}
+
+void Taster10()
+{
+    if ((17<X)&&(X<44)&& (15<Y)&&(Y<25))
+     {
+        reg=2;
+      }
+        //LcdSetDot(X,64-Y);// 
+}
 
 
 int main(int argc, char** argv) {
-    
-    for(broj1=0;broj1<10000;broj1++);
-    
-      /*  TRISBbits.TRISB0=1;
-        TRISBbits.TRISB1=1;
-        TRISBbits.TRISB2=1;
-		TRISBbits.TRISB8=1;//ulazni pin pir
-		TRISBbits.TRISB9=1;//ulazni pin mq3
-        TRISBbits.TRISB12=1;//ulazni pin fotootpornik
-        TRISDbits.TRISD8=0; //izlazni pin
-        TRISDbits.TRISD3=0; //izlazni pin */
         
-		for(broj=0;broj<60000;broj++);
+        for(broj=0;broj<60000;broj++);
+             
+        TRISDbits.TRISD8=0; //izlazni pin
+		
+        for(broj=0;broj<60000;broj++);
 
         
         ConfigureADCPins();
-      //  ConfigureLCDPins();
-       // ConfigureTSPins();
-       // GLCD_LcdInit();
-       // GLCD_ClrScr();
+        ConfigureLCDPins();
+        ConfigureTSPins();
+        GLCD_LcdInit();
+        GLCD_ClrScr();
 		initUART1();//inicijalizacija UART-a
  		ADCinit();//inicijalizacija AD konvertora
         
@@ -464,17 +475,13 @@ int main(int argc, char** argv) {
         T2CONbits.TON=1;//ukljucujemo timer koji koristi*/
         
         
-        
 		ADCON1bits.ADON=1;//pocetak Ad konverzije 
         
         Init_T2();
         
-        
 	while(1)
-	{
-        
-               
-        /*Touch_Panel();
+	{       
+        Touch_Panel();
         GLCD_DisplayPicture(tasteri_bmp);
         
         GoToXY(0,6);
@@ -485,37 +492,80 @@ int main(int argc, char** argv) {
 		GoToXY(0,7);
         GLCD_Printf ("Y=");
         GoToXY(9,7);
-        
         Write_GLCD(Y);
+        
         
          if ((59<X)&&(X<111)&& (6<Y)&&(Y<15))
             {  
              
           	  GLCD_ClrScr();
             }
-        */
         
         
-        /*switch(r)
+       /* switch(r)
         {
-            case 0:
-               servo0();
-               if(detektujPrilaz(pir)==1)
-                   r++;
             case 1:
+                for(broj1=0; broj1<100; broj1++)
+                    servo0();
+               if(enfoto==1)
+                   r++;
+            case 2:
                if(morze() == 1)
                {
                    servo90();
                    r++;
                }
-            case 2:
+                for(broj1=0; broj1<100; broj1++)
+                    servo90();
+                r++;
+            case 3:
                 if(mq3 < 1100)
                 {
                     servo180();
-                    r++;
+                    r=0;
                 }
+            default: break;
         };*/
-               
+        
+        
+                
+           if(reg==0)
+           {
+        for(broj1=0; broj1<100; broj1++)
+        {
+        servo0();
+        if(pir > 2000)
+        { 
+            for(broj2=0; broj2<100; broj2++)
+            {
+            servo90();
+            reg=1;
+            }
+            
+        }
+        }
+           }
+        Taster5();
+        
+        if(reg==2)
+           {
+        for(broj1=0; broj1<100; broj1++)
+        {
+        servo0();
+        if(foto > 1200)
+        { 
+            for(broj2=0; broj2<100; broj2++)
+            {
+            servo180();
+            reg=1;
+            }
+            
+        }
+        }
+           }
+        Taster10();        
+        
+        //servo0();
         ispisiPir(pir);
         ispisiMq3(mq3);
         ispisiFoto(foto);

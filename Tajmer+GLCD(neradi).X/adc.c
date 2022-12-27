@@ -9,11 +9,18 @@ void ConfigureADCPins(void)
 	//ADPCFGbits.PCFG6=0;
 	ADPCFGbits.PCFG8=0;
 	ADPCFGbits.PCFG9=0;
-    ADPCFGbits.PCFG12=0;
+     
+    ADPCFGbits.PCFG6=0;//pir
+    ADPCFGbits.PCFG7=0;//mq3
+    ADPCFGbits.PCFG12=0; //foto
 	
-//	TRISBbits.TRISB6=1;
+	
 	TRISBbits.TRISB8=1;
 	TRISBbits.TRISB9=1;
+    
+    
+    TRISBbits.TRISB6=1;
+    TRISBbits.TRISB7=1;
     TRISBbits.TRISB12=1;
     
     TRISDbits.TRISD9=0;
@@ -119,7 +126,7 @@ bit 0 ALTS: Alternate Input Sample Mode Select bit
 
 ADCON2bits.VCFG=7;
 ADCON2bits.CSCNA=1;
-ADCON2bits.SMPI=2;
+ADCON2bits.SMPI=4;
 ADCON2bits.BUFM=0;
 ADCON2bits.ALTS=0;
 
@@ -189,8 +196,9 @@ bit 15-0 CSSL<15:0>: A/D Input Pin Scan Selection bits
 	0 = Skip ANx for input scan*/
 //ADCSSL=0b0001111111111111;
 
-  ADCSSL=0b000100110000000; //koristimo 8 9 i 10 8pir 9mq3 10foto
-  
+  ADCSSL=0b0001001111000000; //koristimo 6 7 i 12 6pir 7mq3 12foto
+         //FEDCBA9876543210
+                  
   
 ADCON1bits.ASAM=1;
 
