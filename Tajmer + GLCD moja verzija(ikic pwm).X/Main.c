@@ -37,9 +37,9 @@ unsigned int broj,broj1,broj2,tempRX;
 unsigned int brojac_ms,stoperica,ms,sekund;
 unsigned int brojac_ms3,stoperica3,ms3,sekund3;
 
-unsigned int korak=20;
-unsigned int vreme = 100;
-unsigned int vreme2=100;
+int korak=20;
+int vreme = 167;
+int vreme2=166;
 unsigned int morzeI=0;
 unsigned int morzeBrojac=0;
 unsigned int x;
@@ -494,7 +494,11 @@ void Strelica_gore()
 {
 	if ((88<X)&&(X<100)&& (47<=Y)&&(Y<=55))
  { 
-     vreme=vreme+korak;
+        
+        if(vreme+korak<333)
+         vreme=vreme+korak;
+        else 
+            vreme=333;
  }
 }
 
@@ -503,20 +507,32 @@ void Strelica_dole()
 {
   if ((88<X)&&(X<100)&& (15<Y)&&(Y<30))
 	{
-	   vreme=vreme-korak;
+	  
+       if(vreme-korak>0)
+            vreme=vreme-korak;
+       else
+           vreme=0;
+             
 	}
 }
 
 void Set_pwm()
 {
-    vreme2=200-vreme;
-    LATFbits.LATF6=0;
-    Delay_ms3(vreme2);
+    if(vreme==333)
+    {
+       LATFbits.LATF6=1;
+    }
+    else
+    {
+    vreme2=333-vreme;
     LATFbits.LATF6=1;
-    
     Delay_ms3(vreme);
+    LATFbits.LATF6=0;
     
-    
+    Delay_ms3(vreme2);
+    }
+    // Strelica dole radi dobro, a na gore treba hardkodovati kaze gospodin tim lider zameniku tim lidera tj meni
+    //Zalbe zamenika zamenika tim lidera nisu uvazene jer je nadglasan dvotrecinskom vecinom, cetvrti clan nema pravo potpisa.
 }
 
 
@@ -602,7 +618,7 @@ int main(int argc, char** argv) {
         Strelica_dole();
         
         Set_pwm();
-        
+        WriteUART1dec2string(vreme2);
         //servo0();
         /*ispisiPir(pir);
         ispisiMq3(mq3);
@@ -616,7 +632,7 @@ int main(int argc, char** argv) {
         //WriteUART1(sifra[1]);
         //WriteUART1(sifra[2]);
         //WriteUART(vreme2)
-		//WriteUART1(13);//enter
+		WriteUART1(13);//enter
                 
        // servo0();
         //Delay_ms(2000);

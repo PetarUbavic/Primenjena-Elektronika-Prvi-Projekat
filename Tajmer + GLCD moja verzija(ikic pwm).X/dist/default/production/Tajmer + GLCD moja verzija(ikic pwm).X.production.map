@@ -1,4 +1,4 @@
-Microchip Technology Inc, v
+Microchip Technology Inc, v …É
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
@@ -104,11 +104,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x2e8           0x45c  (1116)
 .const                       0x3e8               0x9be           0xe9d  (3741)
-.text                        0xda6               0xf1a          0x16a7  (5799)
-.dinit                      0x1cc0               0x2cc           0x432  (1074)
-.text                       0x1f8c               0x1ae           0x285  (645)
+.text                        0xda6               0xf52          0x16fb  (5883)
+.dinit                      0x1cf8               0x2cc           0x432  (1074)
+.text                       0x1fc4               0x1ae           0x285  (645)
 
-                     Total program memory used (bytes):         0x3057  (12375) 25%
+                     Total program memory used (bytes):         0x30ab  (12459) 25%
 
 
 Data Memory  [Origin = 0x800, Length = 0x800]
@@ -303,37 +303,37 @@ External Symbols in Program Memory (by address):
                   0x001b7c                  _Taster5
                   0x001ba4                  _Taster10
                   0x001bc8                  _Strelica_gore
-                  0x001bf6                  _Strelica_dole
-                  0x001c20                  _Set_pwm
-                  0x001c3e                  _main
-                  0x001f8c                  _ConfigureADCPins
-                  0x001faa                  _ADCinit
-                  0x002020                  _CloseTimer2
-                  0x00202c                  _ConfigIntTimer2
-                  0x00206a                  _OpenTimer2
-                  0x002082                  _ReadTimer2
-                  0x00208c                  _WriteTimer2
-                  0x002098                  _CloseTimer3
-                  0x0020a4                  _ConfigIntTimer3
-                  0x0020e2                  _OpenTimer3
-                  0x0020f8                  _ReadTimer3
-                  0x002102                  _WriteTimer3
-                  0x00210e                  _Init_T2
-                  0x002124                  _Init_T3
+                  0x001c08                  _Strelica_dole
+                  0x001c42                  _Set_pwm
+                  0x001c6c                  _main
+                  0x001fc4                  _ConfigureADCPins
+                  0x001fe2                  _ADCinit
+                  0x002058                  _CloseTimer2
+                  0x002064                  _ConfigIntTimer2
+                  0x0020a2                  _OpenTimer2
+                  0x0020ba                  _ReadTimer2
+                  0x0020c4                  _WriteTimer2
+                  0x0020d0                  _CloseTimer3
+                  0x0020dc                  _ConfigIntTimer3
+                  0x00211a                  _OpenTimer3
+                  0x002130                  _ReadTimer3
+                  0x00213a                  _WriteTimer3
+                  0x002146                  _Init_T2
+                  0x00215c                  _Init_T3
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001faa                  _ADCinit
+                  0x001fe2                  _ADCinit
                   0x000d9a                  _AD_Xmax
                   0x000d98                  _AD_Xmin
                   0x000d9e                  _AD_Ymax
                   0x000d9c                  _AD_Ymin
-                  0x002020                  _CloseTimer2
-                  0x002098                  _CloseTimer3
-                  0x00202c                  _ConfigIntTimer2
-                  0x0020a4                  _ConfigIntTimer3
-                  0x001f8c                  _ConfigureADCPins
+                  0x002058                  _CloseTimer2
+                  0x0020d0                  _CloseTimer3
+                  0x002064                  _ConfigIntTimer2
+                  0x0020dc                  _ConfigIntTimer3
+                  0x001fc4                  _ConfigureADCPins
                   0x000e5e                  _ConfigureLCDPins
                   0x000e8c                  _ConfigureLcdData
                   0x0016da                  _ConfigureTSPins
@@ -354,8 +354,8 @@ External Symbols in Program Memory (by name):
                   0x000f8e                  _GoToX
                   0x000fee                  _GoToXY
                   0x000fd4                  _GoToY
-                  0x00210e                  _Init_T2
-                  0x002124                  _Init_T3
+                  0x002146                  _Init_T2
+                  0x00215c                  _Init_T3
                   0x001050                  _LcdDataRead
                   0x0010e4                  _LcdDataWrite
                   0x000f48                  _LcdDelay
@@ -365,11 +365,11 @@ External Symbols in Program Memory (by name):
                   0x001000                  _LcdSelectStartline
                   0x001206                  _LcdSetDot
                   0x000f60                  _LcdWaitBusy
-                  0x00206a                  _OpenTimer2
-                  0x0020e2                  _OpenTimer3
+                  0x0020a2                  _OpenTimer2
+                  0x00211a                  _OpenTimer3
                   0x000efe                  _ReadLcdData
-                  0x002082                  _ReadTimer2
-                  0x0020f8                  _ReadTimer3
+                  0x0020ba                  _ReadTimer2
+                  0x002130                  _ReadTimer3
                   0x000e40                  _SetCS1
                   0x000e20                  _SetCS2
                   0x000dc6                  _SetE
@@ -377,14 +377,14 @@ External Symbols in Program Memory (by name):
                   0x000e02                  _SetRS
                   0x000da6                  _SetRST
                   0x000de4                  _SetRW
-                  0x001c20                  _Set_pwm
-                  0x001bf6                  _Strelica_dole
+                  0x001c42                  _Set_pwm
+                  0x001c08                  _Strelica_dole
                   0x001bc8                  _Strelica_gore
                   0x001ba4                  _Taster10
                   0x001b7c                  _Taster5
                   0x001782                  _Touch_Panel
-                  0x00208c                  _WriteTimer2
-                  0x002102                  _WriteTimer3
+                  0x0020c4                  _WriteTimer2
+                  0x00213a                  _WriteTimer3
                   0x00175a                  _WriteUART1
                   0x001866                  _WriteUART1dec2string
                   0x0017e8                  _Write_GLCD
@@ -418,7 +418,7 @@ External Symbols in Program Memory (by name):
                   0x00194c                  _ispisiFoto
                   0x001918                  _ispisiMq3
                   0x0018e8                  _ispisiPir
-                  0x001c3e                  _main
+                  0x001c6c                  _main
                   0x001a70                  _morze
                   0x001a44                  _proveriSifru
                   0x001a0e                  _servo0
@@ -607,14 +607,14 @@ userdata
  .debug_abbrev    0x0004cd         0xb8 build/default/production/adc.o
  .debug_abbrev    0x000585        0x179 build/default/production/driverGLCD.o
 
-.debug_line       0x000000       0x1c07
+.debug_line       0x000000       0x1c47
  *(.debug_line)
  .debug_line      0x000000        0x120 build/default/production/Tajmeri.o
  .debug_line      0x000120        0x16d build/default/production/timer2.o
  .debug_line      0x00028d        0x165 build/default/production/timer3.o
- .debug_line      0x0003f2        0x948 build/default/production/Main.o
- .debug_line      0x000d3a        0x1c4 build/default/production/adc.o
- .debug_line      0x000efe        0xd09 build/default/production/driverGLCD.o
+ .debug_line      0x0003f2        0x988 build/default/production/Main.o
+ .debug_line      0x000d7a        0x1c4 build/default/production/adc.o
+ .debug_line      0x000f3e        0xd09 build/default/production/driverGLCD.o
 
 .debug_frame      0x000000        0x538
  *(.debug_frame)
@@ -1620,7 +1620,7 @@ __c30_signature
                     0x8d9c                  _AD_Ymin
                     0x8d9e                  _AD_Ymax
 
-.text             0x000da6        0xf1a
+.text             0x000da6        0xf52
  .text            0x000da6        0x91c build/default/production/driverGLCD.o
                   0x000da6                  _SetRST
                   0x000dc6                  _SetE
@@ -1656,7 +1656,7 @@ __c30_signature
                   0x0015ac                  _GLCD_Printf
                   0x0015c8                  _GLCD_ShowGreed
                   0x001650                  _GLCD_Clr_Rectangle
- .text            0x0016c2        0x5fe build/default/production/Main.o
+ .text            0x0016c2        0x636 build/default/production/Main.o
                   0x0016c2                  _Delay
                   0x0016da                  _ConfigureTSPins
                   0x0016e4                  _initUART1
@@ -1682,29 +1682,29 @@ __c30_signature
                   0x001b7c                  _Taster5
                   0x001ba4                  _Taster10
                   0x001bc8                  _Strelica_gore
-                  0x001bf6                  _Strelica_dole
-                  0x001c20                  _Set_pwm
-                  0x001c3e                  _main
+                  0x001c08                  _Strelica_dole
+                  0x001c42                  _Set_pwm
+                  0x001c6c                  _main
 
-.dinit            0x001cc0        0x2cc
- .dinit           0x001cc0        0x2cc data_init
+.dinit            0x001cf8        0x2cc
+ .dinit           0x001cf8        0x2cc data_init
 
-.text             0x001f8c        0x1ae
- .text            0x001f8c         0x94 build/default/production/adc.o
-                  0x001f8c                  _ConfigureADCPins
-                  0x001faa                  _ADCinit
- .text            0x002020         0x78 build/default/production/timer2.o
-                  0x002020                  _CloseTimer2
-                  0x00202c                  _ConfigIntTimer2
-                  0x00206a                  _OpenTimer2
-                  0x002082                  _ReadTimer2
-                  0x00208c                  _WriteTimer2
- .text            0x002098         0x76 build/default/production/timer3.o
-                  0x002098                  _CloseTimer3
-                  0x0020a4                  _ConfigIntTimer3
-                  0x0020e2                  _OpenTimer3
-                  0x0020f8                  _ReadTimer3
-                  0x002102                  _WriteTimer3
- .text            0x00210e         0x2c build/default/production/Tajmeri.o
-                  0x00210e                  _Init_T2
-                  0x002124                  _Init_T3
+.text             0x001fc4        0x1ae
+ .text            0x001fc4         0x94 build/default/production/adc.o
+                  0x001fc4                  _ConfigureADCPins
+                  0x001fe2                  _ADCinit
+ .text            0x002058         0x78 build/default/production/timer2.o
+                  0x002058                  _CloseTimer2
+                  0x002064                  _ConfigIntTimer2
+                  0x0020a2                  _OpenTimer2
+                  0x0020ba                  _ReadTimer2
+                  0x0020c4                  _WriteTimer2
+ .text            0x0020d0         0x76 build/default/production/timer3.o
+                  0x0020d0                  _CloseTimer3
+                  0x0020dc                  _ConfigIntTimer3
+                  0x00211a                  _OpenTimer3
+                  0x002130                  _ReadTimer3
+                  0x00213a                  _WriteTimer3
+ .text            0x002146         0x2c build/default/production/Tajmeri.o
+                  0x002146                  _Init_T2
+                  0x00215c                  _Init_T3
