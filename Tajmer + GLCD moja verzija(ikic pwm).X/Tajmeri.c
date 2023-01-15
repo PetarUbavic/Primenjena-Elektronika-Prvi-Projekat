@@ -25,6 +25,7 @@ void Init_T2(void)
 					          1/Fosc = 0.1us !!!, 0.1us * 10000 = 1ms  */
 
 
+
 void Init_T3(void)
 {
 	TMR3 = 0;

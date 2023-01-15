@@ -37,9 +37,9 @@ unsigned int broj,broj1,broj2,tempRX;
 unsigned int brojac_ms,stoperica,ms,sekund;
 unsigned int brojac_ms3,stoperica3,ms3,sekund3;
 
-int korak=20;
-int vreme = 167;
-int vreme2=166;
+int korak=66;
+int vreme_on = 333;
+int vreme_off= 333;
 unsigned int morzeI=0;
 unsigned int morzeBrojac=0;
 unsigned int x;
@@ -461,9 +461,9 @@ bool morze()
  */
 void Taster5()
 {
-    if ((17<X)&&(X<44)&& (47<Y)&&(Y<55))
-        { 
-        korak=10;
+    if ((30<X)&&(X<60)&& (47<Y)&&(Y<65))  //((17<X)&&(X<44)&& (47<Y)&&(Y<55))=> stare koordinate
+        {                                 // ((30<X)&&(X<60)&& (47<Y)&&(Y<65)) => nove koordinate
+        korak=33;
         //vreme=10;
             /*LATBbits.LATB5=1;
             Delay_ms(vreme);
@@ -476,8 +476,8 @@ void Taster5()
 
 void Taster10()
 {
-    if ((17<X)&&(X<44)&& (15<Y)&&(Y<25))
-    { korak=20;
+    if ((23<X)&&(X<60)&& (15<Y)&&(Y<30))   //((17<X)&&(X<44)&& (15<Y)&&(Y<25))=> stare koordinate
+    { korak=66;                            //((23<X)&&(X<60)&& (15<Y)&&(Y<30)) => nove koordinate
             //vreme=20;
       /*LATBbits.LATB5=1;
       Delay_ms(vreme);
@@ -492,47 +492,48 @@ void Taster10()
 
 void Strelica_gore()
 {
-	if ((88<X)&&(X<100)&& (47<=Y)&&(Y<=55))
+	if ((90<X)&&(X<120)&& (50<=Y)&&(Y<=65))      //(88<X)&&(X<100)&& (47<=Y)&&(Y<=55)=> stare koordinate
  { 
         
-        if(vreme+korak<333)
-         vreme=vreme+korak;
+        if(vreme_on+korak<666)
+         vreme_on=vreme_on+korak;
         else 
-            vreme=333;
+            vreme_on=666;
  }
 }
 
 
 void Strelica_dole()
 {
-  if ((88<X)&&(X<100)&& (15<Y)&&(Y<30))
+  if ((90<X)&&(X<120)&& (20<Y)&&(Y<40))   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
 	{
 	  
-       if(vreme-korak>0)
-            vreme=vreme-korak;
+       if(vreme_on-korak>0)
+            vreme_on=vreme_on-korak;
        else
-           vreme=0;
+           vreme_on=0;
              
 	}
 }
 
 void Set_pwm()
 {
-    if(vreme==333)
+    if(vreme_on==666)
     {
        LATFbits.LATF6=1;
+       vreme_off=0;
     }
     else
     {
-    vreme2=333-vreme;
+    vreme_off=666-vreme_on;
     LATFbits.LATF6=1;
-    Delay_ms3(vreme);
+    Delay_ms3(vreme_on);
     LATFbits.LATF6=0;
     
-    Delay_ms3(vreme2);
+    Delay_ms3(vreme_off);
     }
-    // Strelica dole radi dobro, a na gore treba hardkodovati kaze gospodin tim lider zameniku tim lidera tj meni
-    //Zalbe zamenika zamenika tim lidera nisu uvazene jer je nadglasan dvotrecinskom vecinom, cetvrti clan nema pravo potpisa.
+    // Strelica dole radi dobro, a na gore treba hardkodovati kaze
+    
 }
 
 
@@ -612,13 +613,19 @@ int main(int argc, char** argv) {
         
                 
            
-        Taster10();        
+               
         Taster5();
+        Taster10();
         Strelica_gore();
         Strelica_dole();
         
         Set_pwm();
-        WriteUART1dec2string(vreme2);
+        WriteUART1dec2string(vreme_off);
+        WriteUART1(32);
+        WriteUART1dec2string(vreme_on);
+        WriteUART1(32);
+        WriteUART1dec2string(korak);
+        
         //servo0();
         /*ispisiPir(pir);
         ispisiMq3(mq3);
