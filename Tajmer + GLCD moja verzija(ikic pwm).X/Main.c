@@ -29,6 +29,8 @@ unsigned int broj,broj1,broj2,temp0,temp1;
 
 #define servo LATDbits.LATD8
 
+#define pocetna 500
+
 unsigned int X, Y,x_vrednost, y_vrednost;
 
 unsigned int pir,mq3,foto, enpir, enfoto;
@@ -37,9 +39,9 @@ unsigned int broj,broj1,broj2,tempRX;
 unsigned int brojac_ms,stoperica,ms,sekund;
 unsigned int brojac_ms3,stoperica3,ms3,sekund3;
 
-int korak=66;
-int vreme_on = 333;
-int vreme_off= 333;
+int korak = pocetna/5;
+int vreme_on = pocetna;
+int vreme_off = pocetna;
 unsigned int morzeI=0;
 unsigned int morzeBrojac=0;
 unsigned int x;
@@ -48,13 +50,6 @@ unsigned char sifra[3];
 unsigned char sifraProvera;
 char r=1;
 bool y;
-
-/***************************************************************************
-* Ime funkcije      : initUART1                                            *
-* Opis              : inicjalizuje RS232 komunikaciju s 9600bauda          * 
-* Parameteri        : Nema                                                 *
-* Povratna vrednost : Nema                                                 *
-***************************************************************************/
 
 unsigned char /*const*/ tasteri_bmp[1024] = {
    0,  0,  0,  0,  0,  0,  0,240, 16, 16, 16, 16, 16, 16, 16, 16, 
@@ -143,6 +138,12 @@ void ConfigureTSPins(void)
 	//LATCbits.LATC13=0;
 }
 
+/***************************************************************************
+* Ime funkcije      : initUART1                                            *
+* Opis              : inicjalizuje RS232 komunikaciju s 28800 bauda        * 
+* Parameteri        : Nema                                                 *
+* Povratna vrednost : Nema                                                 *
+***************************************************************************/
 void initUART1(void)
 {
     //OVO JE KOPIRANO IZ Touch screen.X
@@ -177,6 +178,18 @@ void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void)
     IFS0bits.ADIF = 0;
 } 
 
+void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
+{
+    stoperica = 0;
+	while(stoperica < vreme);
+}
+
+void Delay_ms3 (int vreme)//funkcija za kasnjenje u milisekundama
+{
+	stoperica3 = 0;
+	while(stoperica3 < vreme);
+}
+
 /*********************************************************************
 * Ime funkcije      : WriteUART1                            		 *
 * Opis              : Funkcija upisuje podatke u registar U1TXREG,   *
@@ -184,20 +197,6 @@ void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void)
 * Parameteri        : unsigned int data-podatak koji zelimo poslati  *
 * Povratna vrednost : Nema                                           *
 *********************************************************************/
-
-void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
-	{
-		stoperica = 0;
-		while(stoperica < vreme);
-	}
-
-void Delay_ms3 (int vreme)//funkcija za kasnjenje u milisekundama
-	{
-		stoperica3 = 0;
-		while(stoperica3 < vreme);
-	}
-
-
 void WriteUART1(unsigned int data)
 {
 	while (U1STAbits.TRMT==0);
@@ -206,12 +205,7 @@ void WriteUART1(unsigned int data)
     else
         U1TXREG = data & 0xFF;
 }
-/***********************************************************************
-* Ime funkcije      : WriteUART1dec2string                     		   *
-* Opis              : Funkcija salje 4-cifrene brojeve (cifru po cifru)*
-* Parameteri        : unsigned int data-podatak koji zelimo poslati    *
-* Povratna vrednost : Nema                                             *
-************************************************************************/
+
 void Touch_Panel (void)
 {
 // vode horizontalni tranzistori
@@ -270,6 +264,12 @@ data=data-temp*10;
 Glcd_PutChar(data+'0');
 }
 
+/***********************************************************************
+* Ime funkcije      : WriteUART1dec2string                     		   *
+* Opis              : Funkcija salje 4-cifrene brojeve (cifru po cifru)*
+* Parameteri        : unsigned int data-podatak koji zelimo poslati    *
+* Povratna vrednost : Nema                                             *
+************************************************************************/
 void WriteUART1dec2string(unsigned int data)
 {
 	unsigned char temp;
@@ -285,7 +285,6 @@ void WriteUART1dec2string(unsigned int data)
 	data=data-temp*10;
 	WriteUART1(data+'0');
 }
-
 
 void ispisiPir(unsigned int pir)
 {
@@ -355,6 +354,7 @@ void __attribute__ ((__interrupt__, no_auto_psv)) _T3Interrupt(void) // svakih 1
 	IFS0bits.T3IF = 0;    
 }
 
+//void __attribute__ ((__interrup__, no_auto_psv)) _
 
 
 void servo0()
@@ -367,7 +367,7 @@ void servo0()
     /*PR2=65500;
     OC1RS = 7; //ovim postavljamo faktor ispune
 */
-     }
+}
 
 void servo90()
 {
@@ -392,7 +392,6 @@ void servo180()
     
 }
 
-
 bool proveriSifru()
 {
     if(sifra[0] == '-' && sifra[1] == '.' && sifra[2] == '-') //morzeov kod za slovo K je -.-
@@ -400,7 +399,6 @@ bool proveriSifru()
     else
         return 0;
 }
-
 
 bool morze()
 {
@@ -455,13 +453,11 @@ bool morze()
     goto lstart;
 }
 
-
-/*
- * 
- */
+/*******************/
+/*******************/
 void Taster5()
 {
-    if ((30<X)&&(X<60)&& (47<Y)&&(Y<65))  //((17<X)&&(X<44)&& (47<Y)&&(Y<55))=> stare koordinate
+    if ((17<X)&&(X<44)&& (47<Y)&&(Y<55))  //((17<X)&&(X<44)&& (47<Y)&&(Y<55))=> stare koordinate
         {                                 // ((30<X)&&(X<60)&& (47<Y)&&(Y<65)) => nove koordinate
         korak=33;
         //vreme=10;
@@ -476,7 +472,7 @@ void Taster5()
 
 void Taster10()
 {
-    if ((23<X)&&(X<60)&& (15<Y)&&(Y<30))   //((17<X)&&(X<44)&& (15<Y)&&(Y<25))=> stare koordinate
+    if ((17<X)&&(X<44)&& (15<Y)&&(Y<25))   //((17<X)&&(X<44)&& (15<Y)&&(Y<25))=> stare koordinate
     { korak=66;                            //((23<X)&&(X<60)&& (15<Y)&&(Y<30)) => nove koordinate
             //vreme=20;
       /*LATBbits.LATB5=1;
@@ -489,52 +485,51 @@ void Taster10()
         // korak pwm=10%
 }
 
-
 void Strelica_gore()
 {
-	if ((90<X)&&(X<120)&& (50<=Y)&&(Y<=65))      //(88<X)&&(X<100)&& (47<=Y)&&(Y<=55)=> stare koordinate
- { 
+	if ((88<X)&&(X<100)&& (47<=Y)&&(Y<=55))      //(88<X)&&(X<100)&& (47<=Y)&&(Y<=55)=> stare koordinate
+ {                                               //(90<X)&&(X<120)&& (50<=Y)&&(Y<=65) => nove koordinate
         
-        if(vreme_on+korak<666)
+        if(vreme_on+korak<pocetna*2)
          vreme_on=vreme_on+korak;
         else 
-            vreme_on=666;
+            vreme_on=pocetna*2;
  }
 }
 
-
 void Strelica_dole()
 {
-  if ((90<X)&&(X<120)&& (20<Y)&&(Y<40))   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
-	{
-	  
+  if ((88<X)&&(X<100)&& (15<Y)&&(Y<30))   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
+	{                                     //(90<X)&&(X<120)&& (20<Y)&&(Y<40) => nove koordinate
        if(vreme_on-korak>0)
             vreme_on=vreme_on-korak;
        else
            vreme_on=0;
-             
 	}
 }
 
 void Set_pwm()
 {
-    if(vreme_on==666)
+    if(vreme_on==pocetna*2+pocetna*2/5)
     {
        LATFbits.LATF6=1;
        vreme_off=0;
     }
     else
     {
-    vreme_off=666-vreme_on;
+    vreme_off=pocetna*2-vreme_on;
+    
     LATFbits.LATF6=1;
     Delay_ms3(vreme_on);
     LATFbits.LATF6=0;
-    
     Delay_ms3(vreme_off);
     }
     // Strelica dole radi dobro, a na gore treba hardkodovati kaze
     
 }
+/*
+ * 
+ */
 
 
 int main(int argc, char** argv) {
@@ -555,13 +550,11 @@ int main(int argc, char** argv) {
  		ADCinit();//inicijalizacija AD konvertora
         
         
-        
-        
-        
 		ADCON1bits.ADON=1;//pocetak Ad konverzije 
         
         Init_T2();
         Init_T3();
+        
 	while(1)
 	{       
         Touch_Panel();
@@ -620,7 +613,7 @@ int main(int argc, char** argv) {
         Strelica_dole();
         
         Set_pwm();
-        WriteUART1dec2string(vreme_off);
+       /* WriteUART1dec2string(vreme_off);
         WriteUART1(32);
         WriteUART1dec2string(vreme_on);
         WriteUART1(32);
@@ -639,7 +632,7 @@ int main(int argc, char** argv) {
         //WriteUART1(sifra[1]);
         //WriteUART1(sifra[2]);
         //WriteUART(vreme2)
-		WriteUART1(13);//enter
+	//	WriteUART1(13);//enter
                 
        // servo0();
         //Delay_ms(2000);
