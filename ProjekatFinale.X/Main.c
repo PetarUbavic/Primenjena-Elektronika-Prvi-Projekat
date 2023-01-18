@@ -14,10 +14,10 @@ _FWDT(WDT_OFF);
 _FGS(CODE_PROT_OFF);
 
 //const unsigned int ADC_THRESHOLD = 900; 
-const unsigned int AD_Xmin =220;
-const unsigned int AD_Xmax =3642;
-const unsigned int AD_Ymin =520;
-const unsigned int AD_Ymax =3450;
+const unsigned int AD_Xmin = 220;
+const unsigned int AD_Xmax = 3642;
+const unsigned int AD_Ymin = 520;
+const unsigned int AD_Ymax = 3450;
 
 unsigned int sirovi0,sirovi1;
 unsigned int broj,broj1,broj2,temp0,temp1;
@@ -33,7 +33,7 @@ unsigned int broj,broj1,broj2,temp0,temp1;
 
 unsigned int X, Y,x_vrednost, y_vrednost;
 
-unsigned int pir,mq3,foto, enpir, enfoto;
+unsigned int pir,mq3,foto, enpir, enfoto, enmq3;
 unsigned int broj,broj1,broj2;
 
 unsigned int brojac_ms,stoperica,ms,sekund;
@@ -54,6 +54,7 @@ unsigned char sifraProvera;
 char r=1;
 bool y;
 
+unsigned char zakljucan = 0;
 unsigned char tempRX;
 unsigned int n;
 int rec[5];
@@ -164,6 +165,7 @@ void initUART1(void)
     U1MODEbits.UARTEN=1;
     U1STAbits.UTXEN=1;
 }
+
 void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void) 
 {
     IFS0bits.U1RXIF = 0;
@@ -192,6 +194,11 @@ void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void)
 
     IFS0bits.ADIF = 0;
 } 
+
+void __attribute__((__interrupt__, no_auto_psv)) _TCSCRInterrupt(void)
+{
+    
+}
 
 void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
 {
@@ -239,7 +246,7 @@ void Touch_Panel (void)
      LATCbits.LATC13=1;
      LATCbits.LATC14=0;
 
-	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija
+	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija bilo 50
 				
 	// ocitavamo x	
 	x_vrednost = temp0;//temp0 je vrednost koji nam daje AD konvertor na BOTTOM pinu		
@@ -250,7 +257,7 @@ void Touch_Panel (void)
 	DRIVE_A = 0;  
 	DRIVE_B = 1;
 
-	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija
+	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija bilo 50
 	
 	// ocitavamo y	
 	y_vrednost = temp1;// temp1 je vrednost koji nam daje AD konvertor na LEFT pinu	
@@ -258,7 +265,7 @@ void Touch_Panel (void)
 //Ako ?elimo da nam X i Y koordinate budu kao rezolucija ekrana 128x64 treba skalirati vrednosti x_vrednost i y_vrednost tako da budu u opsegu od 0-128 odnosno 0-64
 //skaliranje x-koordinate
 
-    X=(x_vrednost-161)*0.03629;
+    X = (x_vrednost-161) * 0.03629;
 
 
 
@@ -267,25 +274,25 @@ void Touch_Panel (void)
 
 
 //Skaliranje Y-koordinate
-	Y= ((y_vrednost-500)*0.020725);
+	Y = (y_vrednost-500) * 0.020725;
 
 //	Y= ((y_vrednost-AD_Ymin)/(AD_Ymax-AD_Ymin))*64;
 }
 
 void Write_GLCD(unsigned int data)
 {
-unsigned char temp;
+    unsigned char temp;
 
-temp=data/1000;
-Glcd_PutChar(temp+'0');
-data=data-temp*1000;
-temp=data/100;
-Glcd_PutChar(temp+'0');
-data=data-temp*100;
-temp=data/10;
-Glcd_PutChar(temp+'0');
-data=data-temp*10;
-Glcd_PutChar(data+'0');
+    temp=data/1000;
+    Glcd_PutChar(temp+'0');
+    data=data-temp*1000;
+    temp=data/100;
+    Glcd_PutChar(temp+'0');
+    data=data-temp*100;
+    temp=data/10;
+    Glcd_PutChar(temp+'0');
+    data=data-temp*10;
+    Glcd_PutChar(data+'0');
 }
 
 /***********************************************************************
@@ -335,6 +342,7 @@ unsigned int detektujPrilaz(unsigned int pir)
 {
     if(pir > 2000)
         {
+            Delay_ms(7000);
             enpir++;
             if(enpir % 2 == 1)
                 enfoto = 1;
@@ -380,38 +388,29 @@ void __attribute__ ((__interrupt__, no_auto_psv)) _T3Interrupt(void) // svakih 1
 
 //void __attribute__ ((__interrup__, no_auto_psv)) _
 
-
 void servo0()
 {
-        servo = 1;
-        Delay_ms(5);
-        servo = 0;
-        Delay_ms(195);
-    
-    /*PR2=65500;
-    OC1RS = 7; //ovim postavljamo faktor ispune
-*/
+    servo = 1;
+    Delay_ms(5);
+    servo = 0;
+    Delay_ms(195);    
 }
+           
 
 void servo90()
 {
-        servo = 1;
-        Delay_ms(15);
-        servo = 0;
-        Delay_ms(185); 
-   /* PR2=65500;
-    OC1RS = 25; //ovim postavljamo faktor ispune*/
+    servo = 1;
+    Delay_ms(15);
+    servo = 0;
+    Delay_ms(185);
 }
 
 void servo180()
 {
-        servo = 1;
-        Delay_ms(38);
-        servo = 0;
-        Delay_ms(162);
-    /*PR2=65500;//odredjuje frekvenciju po formuli
-    OC1RS = 50;    //ovim postavljamo faktor ispune*/
-    
+    servo = 1;
+    Delay_ms(38);
+    servo = 0;
+    Delay_ms(162);
 }
 
 bool proveriSifru()
@@ -475,6 +474,11 @@ bool morze()
     goto lstart;
 }
 
+void ispisiPoruku()
+{
+    
+}
+
 /*******************/
 /*******************/
 void Taster5()
@@ -509,7 +513,7 @@ void Taster10()
 
 void Strelica_gore()
 {
-	if ((88<X)&&(X<100)&& (47<=Y)&&(Y<=55))      //(88<X)&&(X<100)&& (47<=Y)&&(Y<=55)=> stare koordinate
+	if ((78<X)&&(X<100)&& (40<=Y)&&(Y<=55))      //(88<X)&&(X<100)&& (47<=Y)&&(Y<=55)=> stare koordinate
  {                                               //(90<X)&&(X<120)&& (50<=Y)&&(Y<=65) => nove koordinate
         
         if(vreme_on+korak<pocetna*2)
@@ -521,30 +525,36 @@ void Strelica_gore()
 
 void Strelica_dole()
 {
-  if ((88<X)&&(X<100)&& (15<Y)&&(Y<30))   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
+  if (78<X && X<100 && 15<Y && Y<30)   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
 	{                                     //(90<X)&&(X<120)&& (20<Y)&&(Y<40) => nove koordinate
-       if(vreme_on-korak>0)
-            vreme_on=vreme_on-korak;
+       if(vreme_on - korak > 0)
+            vreme_on = vreme_on - korak;
        else
-           vreme_on=0;
+           vreme_on = 0;
 	}
 }
 
 void Set_pwm()
 {
-    if(vreme_on==pocetna*2+pocetna*2/5)
+    if(vreme_on == pocetna * 2 + pocetna * 2 / 5)
     {
-       LATFbits.LATF6=1;
-       vreme_off=0;
+       LATFbits.LATF6 = 1;
+       LATAbits.LATA11 = 1;
+       vreme_off = 0;
     }
     else
     {
-    vreme_off=pocetna*2-vreme_on;
+    vreme_off = pocetna * 2 - vreme_on;
     
-    LATFbits.LATF6=1;
+    LATFbits.LATF6 = 1;
+    LATAbits.LATA11 = 1;
     Delay_ms3(vreme_on);
-    LATFbits.LATF6=0;
-    Delay_ms3(vreme_off);
+    if(vreme_on != pocetna*2)
+    {    
+        LATFbits.LATF6 = 0;
+        LATAbits.LATA11 = 0;
+        Delay_ms3(vreme_off);
+    }
     }
     // Strelica dole radi dobro, a na gore treba hardkodovati kaze
     
@@ -558,7 +568,8 @@ int main(int argc, char** argv) {
         
         for(broj=0;broj<60000;broj++);
              
-        TRISDbits.TRISD8=0; //izlazni pin
+        TRISAbits.TRISA11 = 0; //izlazni pin
+        TRISDbits.TRISD8 = 0; //izlazni pin
 		
         for(broj=0;broj<60000;broj++);
 
@@ -578,12 +589,7 @@ int main(int argc, char** argv) {
         Init_T3();
         
 	while(1)
-	{       
-        /*if(rec[0]=='D' && rec[1]=='O'&& rec[2]=='R' && rec[3]=='O' && rec[4]=='S')
-            taster = 1;
-        else
-            taster = 0;*/
-        
+	{ 
         if(rec[0]=='D' && rec[1]=='O'&& rec[2]=='R' && rec[3]=='O' && rec[4]=='S')
         {
             rec[0]='A';
@@ -599,7 +605,7 @@ int main(int argc, char** argv) {
                 Touch_Panel();
                 GLCD_DisplayPicture(tasteri_bmp);
         
-                    GoToXY(0,6);
+                    /*GoToXY(0,6);
                     GLCD_Printf ("X=");
                     GoToXY(9,6);
                     Write_GLCD(X);
@@ -607,9 +613,7 @@ int main(int argc, char** argv) {
                     GoToXY(0,7);
                     GLCD_Printf ("Y=");
                     GoToXY(9,7);
-                    Write_GLCD(Y);
-        
-        
+                    Write_GLCD(Y);*/
                     Taster5();
                     Taster10();
                     Strelica_gore();
@@ -628,54 +632,64 @@ int main(int argc, char** argv) {
         
         if(taster==0)
         {
-         
-           for(broj1=0; broj1<30; broj++)
-            servo0();
-        
-        
-       /* switch(r)
-        {
-            case 1:
-                for(broj1=0; broj1<100; broj1++)
-                    servo0();
-               if(enfoto==1)
-                   r++;
-            case 2:
-               if(morze() == 1)
-               {
-                   servo90();
-                   r++;
-               }
-                for(broj1=0; broj1<100; broj1++)
-                    servo90();
-                r++;
-            case 3:
-                if(mq3 < 1100)
+            if(zakljucan == 0)
+            {
+                
+            for(broj1 = 0; broj1 < 30; broj1++)
+                servo0(); //automobil zakljucan - inicijalno stanje
+            zakljucan++;
+            RS232_putst("ZAKLJUCAN");
+            }
+            
+            
+            if(detektujPrilaz(pir))
+            {
+                for(broj1 = 0; broj1 < 2; broj1++)
+                    Delay_ms(4000);
+                enfoto = 1;
+                RS232_putst("PIR DETEKTOVAO");
+            }
+                
+            if(enfoto == 1 && foto < 200)
+            {
+                for(broj1 = 0; broj1 < 30; broj1++)
+                    servo90(); // automobil otkljucan
+                enfoto = 0;
+                enmq3 = 1;
+                RS232_putst("OBASJAN SAM");
+            }
+            
+            if(enmq3 == 1 )
+            {
+                for(broj1 = 0; broj1 < 15; broj1++)
+                    Delay_ms(7000);
+                if(mq3 < 1000)
                 {
-                    servo180();
-                    r=0;
+                    for(broj1 = 0; broj1 < 30; broj1++)
+                        servo180(); // automobil dozvoljava paljenje
+                    RS232_putst("SRECAN PUT");
+                    zakljucan = 0;
                 }
-            default: break;
-        };*/
-       
+                else
+                {
+                    RS232_putst("Ej druze pijan si");
+                    zakljucan = 0;
+                }
+                enmq3 = 0;
+            }
             
-        if(detektujPrilaz(pir))
-            enfoto = 1;
-        if(enfoto == 1)
-        {
-            enfoto = 0;
-        }
+            WriteUART1dec2string(enpir);
+        
+           
             
-        //for(broj1=0; broj1<30; broj1++)
-        //    servo0();
-        ispisiPir(pir);
+        /*ispisiPir(pir);
         ispisiMq3(mq3);
         ispisiFoto(foto);
        
-        //WriteUART(vreme2)
+        //WriteUART(vreme2)*/
 		WriteUART1(13);//enter
               
-        //for(broj1=0; broj1<30; broj1++)
+       // for(broj1=0; broj1<30; broj1++)
         //    servo90();
         Delay_ms(2000);
         }
