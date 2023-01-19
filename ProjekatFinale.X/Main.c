@@ -195,10 +195,6 @@ void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt(void)
     IFS0bits.ADIF = 0;
 } 
 
-void __attribute__((__interrupt__, no_auto_psv)) _TCSCRInterrupt(void)
-{
-    
-}
 
 void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama
 {
@@ -239,21 +235,21 @@ void RS232_putst(register const char*str)
 
 void Touch_Panel (void)
 {
-// vode horizontalni tranzistori
+    // vode horizontalni tranzistori
 	DRIVE_A = 1;  
 	DRIVE_B = 0;
     
-     LATCbits.LATC13=1;
-     LATCbits.LATC14=0;
+    LATCbits.LATC13=1;
+    LATCbits.LATC14=0;
 
-	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija bilo 50
+	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija
 				
 	// ocitavamo x	
 	x_vrednost = temp0;//temp0 je vrednost koji nam daje AD konvertor na BOTTOM pinu		
 
 	// vode vertikalni tranzistori
-     LATCbits.LATC13=0;
-     LATCbits.LATC14=1;
+    LATCbits.LATC13=0;
+    LATCbits.LATC14=1;
 	DRIVE_A = 0;  
 	DRIVE_B = 1;
 
@@ -262,8 +258,8 @@ void Touch_Panel (void)
 	// ocitavamo y	
 	y_vrednost = temp1;// temp1 je vrednost koji nam daje AD konvertor na LEFT pinu	
 	
-//Ako ?elimo da nam X i Y koordinate budu kao rezolucija ekrana 128x64 treba skalirati vrednosti x_vrednost i y_vrednost tako da budu u opsegu od 0-128 odnosno 0-64
-//skaliranje x-koordinate
+    //Ako zelimo da nam X i Y koordinate budu kao rezolucija ekrana 128x64 treba skalirati vrednosti x_vrednost i y_vrednost tako da budu u opsegu od 0-128 odnosno 0-64
+    //skaliranje x-koordinate
 
     X = (x_vrednost-161) * 0.03629;
 
@@ -386,8 +382,6 @@ void __attribute__ ((__interrupt__, no_auto_psv)) _T3Interrupt(void) // svakih 1
 	IFS0bits.T3IF = 0;    
 }
 
-//void __attribute__ ((__interrup__, no_auto_psv)) _
-
 void servo0()
 {
     servo = 1;
@@ -411,72 +405,6 @@ void servo180()
     Delay_ms(38);
     servo = 0;
     Delay_ms(162);
-}
-
-bool proveriSifru()
-{
-    if(sifra[0] == '-' && sifra[1] == '.' && sifra[2] == '-') //morzeov kod za slovo K je -.-
-        return 1;
-    else
-        return 0;
-}
-
-bool morze()
-{
-  lstart:  if(foto > 1000) // mozda treba while / do while
-    {
-        Delay_ms(100); //sacekaj 10ms
-        morzeI++; //povecaj morzeI (neki brojac), ako je npr morzeI = 10, to znaci da je svetlosni impuls trajao 100ms
-        x = morzeI; //upisi vrednost brojaca u promenljivu x
-        WriteUART1('T'); //debuguing linija
-    }
-    else
-    {
-        morzeI=0; //doslo je do prekida svetlosti, stavi brojac na 0
-        x = x*10; //mnozim sa 10 da bi dobio x u mili sekundama
-        WriteUART1('N'); // debuging linija
-        //WriteUART1dec2string(x); //debuging linija
-        
-        ////////////////////////
-        if(morzeBrojac < 3 && x != 0)  // ovaj deo ne radi, treba se jos igrati da vidimo sta je
-        {
-            niz[morzeBrojac]=x;
-            x=0;
-            morzeBrojac++;
-        }
-        else if(morzeBrojac == 2)
-        {
-            if(niz[0] > 800   &&   niz[0] < 1200)
-                sifra[0]  = '-';
-            else if(niz[0] > 350  &&  niz[0] < 650)
-                sifra[0] = '.';
-
-            if(niz[1] > 800   &&   niz[1] < 1200)
-                sifra[1]  = '-';
-            else if(niz[1] > 350  &&  niz[1] < 650)
-                sifra[1] = '.';
-
-            if(niz[2] > 800   &&   niz[2] < 1200)
-                sifra[2]  = '-';
-            else if(niz[2] > 350  &&  niz[2] < 650)
-                sifra[2] = '.';
-
-            if(proveriSifru() == 1)
-                return 1;
-            else if(proveriSifru() == 0)
-                return 0;
-
-            morzeBrojac = 0;     
-        }
-        ////////////////////////
-    } 
-    
-    goto lstart;
-}
-
-void ispisiPoruku()
-{
-    
 }
 
 /*******************/
@@ -571,14 +499,14 @@ int main(int argc, char** argv) {
         TRISAbits.TRISA11 = 0; //izlazni pin
         TRISDbits.TRISD8 = 0; //izlazni pin
 		
-        for(broj=0;broj<60000;broj++);
+        for(broj=0;broj<60000;broj++); 
 
         
-        ConfigureADCPins();
-        ConfigureLCDPins();
-        ConfigureTSPins();
-        GLCD_LcdInit();
-        GLCD_ClrScr();
+        ConfigureADCPins(); //podesi pinove za AD konverziju
+        ConfigureLCDPins(); //podesi pinove za LCD
+        ConfigureTSPins(); //podesi pinove za TouchScreen
+        GLCD_LcdInit(); //inicijalizuj GLCD
+        GLCD_ClrScr(); //obrisi GLCD
 		initUART1();//inicijalizacija UART-a
  		ADCinit();//inicijalizacija AD konvertora
         
@@ -592,9 +520,9 @@ int main(int argc, char** argv) {
 	{ 
         if(rec[0]=='D' && rec[1]=='O'&& rec[2]=='R' && rec[3]=='O' && rec[4]=='S')
         {
-            rec[0]='A';
+            rec[0]='A'; //rec[0]='A' zato sto inace non stop menja stanja, te je taster = 1 te je 0;
             taster++;
-            if(taster % 2 == 0)
+            if(taster % 2 == 0) 
                 taster = 0;
         }
         
@@ -614,6 +542,8 @@ int main(int argc, char** argv) {
                     GLCD_Printf ("Y=");
                     GoToXY(9,7);
                     Write_GLCD(Y);*/
+                
+                
                     Taster5();
                     Taster10();
                     Strelica_gore();
@@ -634,11 +564,11 @@ int main(int argc, char** argv) {
         {
             if(zakljucan == 0)
             {
-                
-            for(broj1 = 0; broj1 < 30; broj1++)
-                servo0(); //automobil zakljucan - inicijalno stanje
-            zakljucan++;
-            RS232_putst("ZAKLJUCAN");
+                enpir = 0;
+                for(broj1 = 0; broj1 < 30; broj1++)
+                    servo0(); //automobil zakljucan - inicijalno stanje
+                zakljucan++;
+                RS232_putst("ZAKLJUCAN");
             }
             
             
@@ -663,14 +593,14 @@ int main(int argc, char** argv) {
             {
                 for(broj1 = 0; broj1 < 15; broj1++)
                     Delay_ms(7000);
-                if(mq3 < 1000)
+                if(mq3 < 1000) //nema alkohola
                 {
                     for(broj1 = 0; broj1 < 30; broj1++)
                         servo180(); // automobil dozvoljava paljenje
                     RS232_putst("SRECAN PUT");
                     zakljucan = 0;
                 }
-                else
+                else //ima alkohola
                 {
                     RS232_putst("Ej druze pijan si");
                     zakljucan = 0;
@@ -688,9 +618,6 @@ int main(int argc, char** argv) {
        
         //WriteUART(vreme2)*/
 		WriteUART1(13);//enter
-              
-       // for(broj1=0; broj1<30; broj1++)
-        //    servo90();
         Delay_ms(2000);
         }
 	}//od whilea

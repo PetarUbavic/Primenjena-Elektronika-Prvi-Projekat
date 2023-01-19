@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Tajmer + GLCD moja verzija(ikic pwm).X
+PROJECTNAME=ProjekatFinale.X
 
 # Active Configuration
 DEFAULTCONF=default

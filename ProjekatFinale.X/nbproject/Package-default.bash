@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Tajmer___GLCD_moja_verzija_ikic_pwm_.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=Tajmer___GLCD_moja_verzija_ikic_pwm_.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=tajmer+glcdmojaverzija(ikicpwm).x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/ProjekatFinale.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=ProjekatFinale.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=projekatfinale.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/tajmer+glcdmojaverzija(ikicpwm).x/bin
+makeDirectory ${TMPDIR}/projekatfinale.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/tajmer+glcdmojaverzija(ikicpwm).x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/projekatfinale.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/tajmer+glcdmojaverzija(ikicpwm).x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/projekatfinale.x.tar *
 checkReturnCode
 
 # Cleanup
