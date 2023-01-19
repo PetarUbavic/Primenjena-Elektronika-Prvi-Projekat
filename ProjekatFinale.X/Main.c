@@ -313,42 +313,41 @@ void WriteUART1dec2string(unsigned int data)
 	WriteUART1(data+'0');
 }
 
-void ispisiPir(unsigned int pir)
+void ispisiPir(unsigned int pir) // ispisuje na terminal vrednost AD konverzije sa PIR-a
 {
-    WriteUART1('P');WriteUART1('I');WriteUART1('R');WriteUART1(' ');
+    RS232_putst("PIR: ");
     WriteUART1dec2string(pir);
 	for(broj2=0;broj2<1000;broj2++);
 }
 
-void ispisiMq3(unsigned int mq3)
+void ispisiMq3(unsigned int mq3) // ispisuje na terminal vrednost AD konverzije sa MQ3
 {
-    WriteUART1(' ');WriteUART1('M');WriteUART1('Q');WriteUART1('3');WriteUART1(' ');
+    RS232_putst("MQ3: ");
 	WriteUART1dec2string(mq3);
     for(broj2=0;broj2<1000;broj2++);
 }
 
-void ispisiFoto(unsigned int foto)
+void ispisiFoto(unsigned int foto) // ispisuje na terminal vrednost AD konverzije sa fotootoprnika
 {
-    WriteUART1(' ');WriteUART1('F');WriteUART1('O');WriteUART1('T');WriteUART1(' ');
+    RS232_putst("FOTO: ");
     WriteUART1dec2string(foto);
 	for(broj2=0;broj2<1000;broj2++);
 }
 
 unsigned int detektujPrilaz(unsigned int pir)
 {
-    if(pir > 2000)
+    if(pir > 2000) // PIR na jedinici daje oko 2500-3000 na AD konverziji
         {
-            Delay_ms(7000);
+            Delay_ms(7000); // sacekati da se smiri odziv PIR-a
             enpir++;
             if(enpir % 2 == 1)
-                enfoto = 1;
+                enfoto = 1; // enable za obasjavanje fotootpornika
                 /// dodati watchdog timer ili nesto slicno
             else
                 enfoto = 0;
         }
     return enfoto;
 }
-
 
 void __attribute__ ((__interrupt__, no_auto_psv)) _T2Interrupt(void) // svakih 1ms
 {
@@ -369,20 +368,21 @@ void __attribute__ ((__interrupt__, no_auto_psv)) _T2Interrupt(void) // svakih 1
 void __attribute__ ((__interrupt__, no_auto_psv)) _T3Interrupt(void) // svakih 1ms
 {
 	TMR3 = 0;
-     ms3 = 1;//fleg za milisekundu ili prekid;potrebno ga je samo resetovati u funkciji
+    ms3 = 1; //fleg za milisekundu ili prekid ; potrebno ga je samo resetovati u funkciji
 
-	brojac_ms3++;//brojac milisekundi
-    stoperica3++;//brojac za funkciju Delay_ms
+	brojac_ms3++; //brojac milisekundi
+    stoperica3++; //brojac za funkciju Delay_ms3
 
-    if (brojac_ms3 == 1000)//sek
+    if (brojac_ms3 == 1000) //sek
         {
-          brojac_ms3 = 0;
-          sekund3 = 1;//fleg za sekundu
-		 } 
+            brojac_ms3 = 0;
+            sekund3 = 1; //fleg za sekundu
+		} 
+    
 	IFS0bits.T3IF = 0;    
 }
 
-void servo0()
+void servo0() // salje servo na 0 stepeni
 {
     servo = 1;
     Delay_ms(5);
@@ -390,8 +390,7 @@ void servo0()
     Delay_ms(195);    
 }
            
-
-void servo90()
+void servo90() // salje servo na 90 stepeni
 {
     servo = 1;
     Delay_ms(15);
@@ -399,7 +398,7 @@ void servo90()
     Delay_ms(185);
 }
 
-void servo180()
+void servo180() // salje servo na 180 stepeni
 {
     servo = 1;
     Delay_ms(38);
@@ -409,43 +408,25 @@ void servo180()
 
 /*******************/
 /*******************/
+
 void Taster5()
 {
-    if ((17<X)&&(X<44)&& (47<Y)&&(Y<55))  //((17<X)&&(X<44)&& (47<Y)&&(Y<55)) => stare koordinate
-        {                                 // ((30<X)&&(X<60)&& (47<Y)&&(Y<65)) => nove koordinate
-        korak=pocetna/10;
-        //vreme=10;
-            /*LATBbits.LATB5=1;
-            Delay_ms(vreme);
-    	    LATBbits.LATB5=0;
-    	    perioda=perioda-vreme;
-            Delay_ms(perioda);*/
-    
-        }// korak pwm=5%
+    if (17 < X  &&  X < 44  &&  47 < Y  &&  Y < 55)
+        korak = pocetna/10; // korak pwm=5%
 }
 
 void Taster10()
 {
-    if ((17<X)&&(X<44)&& (15<Y)&&(Y<25))   //((17<X)&&(X<44)&& (15<Y)&&(Y<25))=> stare koordinate
-    { korak=pocetna/5;                            //((23<X)&&(X<60)&& (15<Y)&&(Y<30)) => nove koordinate
-            //vreme=20;
-      /*LATBbits.LATB5=1;
-      Delay_ms(vreme);
-      LATBbits.LATB5=0;
-      perioda=perioda-vreme;
-      Delay_ms(perioda);*/
-     //perioda 20ms
-      }
-        // korak pwm=10%
+    if (17 < X  &&  X < 44  &&  15 < Y && Y<25)   
+        korak = pocetna/5; // korak pwm=10%                     
 }
 
 void Strelica_gore()
 {
-	if ((78<X)&&(X<100)&& (40<=Y)&&(Y<=55))      //(88<X)&&(X<100)&& (47<=Y)&&(Y<=55)=> stare koordinate
- {                                               //(90<X)&&(X<120)&& (50<=Y)&&(Y<=65) => nove koordinate
-        
+	if (78 < X  &&  X < 100  &&  39 < Y  &&  Y < 56 )
+ {
         if(vreme_on+korak<pocetna*2)
-         vreme_on=vreme_on+korak;
+            vreme_on=vreme_on+korak;
         else 
             vreme_on=pocetna*2;
  }
@@ -453,12 +434,12 @@ void Strelica_gore()
 
 void Strelica_dole()
 {
-  if (78<X && X<100 && 15<Y && Y<30)   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
+  if (78 < X && X < 100 && 15 < Y && Y < 30)   //((88<X)&&(X<100)&& (15<Y)&&(Y<30)) => stare koordinate
 	{                                     //(90<X)&&(X<120)&& (20<Y)&&(Y<40) => nove koordinate
        if(vreme_on - korak > 0)
             vreme_on = vreme_on - korak;
        else
-           vreme_on = 0;
+            vreme_on = 0;
 	}
 }
 
@@ -472,20 +453,19 @@ void Set_pwm()
     }
     else
     {
-    vreme_off = pocetna * 2 - vreme_on;
-    
-    LATFbits.LATF6 = 1;
-    LATAbits.LATA11 = 1;
-    Delay_ms3(vreme_on);
-    if(vreme_on != pocetna*2)
-    {    
-        LATFbits.LATF6 = 0;
-        LATAbits.LATA11 = 0;
-        Delay_ms3(vreme_off);
-    }
-    }
-    // Strelica dole radi dobro, a na gore treba hardkodovati kaze
-    
+        vreme_off = pocetna * 2 - vreme_on;
+
+        LATFbits.LATF6 = 1;
+        LATAbits.LATA11 = 1;
+        Delay_ms3(vreme_on);
+        
+        if(vreme_on != pocetna*2)
+        {    
+            LATFbits.LATF6 = 0;
+            LATAbits.LATA11 = 0;
+            Delay_ms3(vreme_off);
+        }
+    }    
 }
 /*
  * 
@@ -507,8 +487,8 @@ int main(int argc, char** argv) {
         ConfigureTSPins(); //podesi pinove za TouchScreen
         GLCD_LcdInit(); //inicijalizuj GLCD
         GLCD_ClrScr(); //obrisi GLCD
-		initUART1();//inicijalizacija UART-a
- 		ADCinit();//inicijalizacija AD konvertora
+		initUART1(); //inicijalizacija UART-a
+ 		ADCinit(); //inicijalizacija AD konvertora
         
         
 		ADCON1bits.ADON=1;//pocetak Ad konverzije 
@@ -518,9 +498,9 @@ int main(int argc, char** argv) {
         
 	while(1)
 	{ 
-        if(rec[0]=='D' && rec[1]=='O'&& rec[2]=='R' && rec[3]=='O' && rec[4]=='S')
+        if(rec[0] == 'D' && rec[1] == 'O'&& rec[2] == 'R' && rec[3] == 'O' && rec[4] == 'S')
         {
-            rec[0]='A'; //rec[0]='A' zato sto inace non stop menja stanja, te je taster = 1 te je 0;
+            rec[0] = 'A'; //rec[0]='A' zato sto inace non stop menja stanja, te je taster = 1 te je 0;
             taster++;
             if(taster % 2 == 0) 
                 taster = 0;
@@ -528,53 +508,51 @@ int main(int argc, char** argv) {
         
        
         
-        if(taster==1)//ukoliko je taster pritisnut menjamo stanje diode
-            {
-                Touch_Panel();
-                GLCD_DisplayPicture(tasteri_bmp);
+        if(taster == 1) //ukoliko je taster pritisnut menjamo stanje diode
+        {
+            Touch_Panel();
+            GLCD_DisplayPicture(tasteri_bmp);
+    
+                /*GoToXY(0,6);
+                GLCD_Printf ("X=");
+                GoToXY(9,6);
+                Write_GLCD(X);
         
-                    /*GoToXY(0,6);
-                    GLCD_Printf ("X=");
-                    GoToXY(9,6);
-                    Write_GLCD(X);
-	        
-                    GoToXY(0,7);
-                    GLCD_Printf ("Y=");
-                    GoToXY(9,7);
-                    Write_GLCD(Y);*/
+                GoToXY(0,7);
+                GLCD_Printf ("Y=");
+                GoToXY(9,7);
+                Write_GLCD(Y);*/
                 
                 
-                    Taster5();
-                    Taster10();
-                    Strelica_gore();
-                    Strelica_dole();
+                Taster5();
+                Taster10();
+                Strelica_gore();
+                Strelica_dole();
         
-                    Set_pwm();
-                    WriteUART1dec2string(vreme_off);
-                    WriteUART1(32);
-                    WriteUART1dec2string(vreme_on);
-                    WriteUART1(32);
-                    WriteUART1dec2string(korak);
-                    WriteUART1(13);
-				}
+                Set_pwm();
+                WriteUART1dec2string(vreme_off);
+                WriteUART1(32);
+                WriteUART1dec2string(vreme_on);
+                WriteUART1(32);
+                WriteUART1dec2string(korak);
+                WriteUART1(13);
+            }
         
-        
-        
-        if(taster==0)
+        if(taster == 0)
         {
             if(zakljucan == 0)
             {
                 enpir = 0;
                 for(broj1 = 0; broj1 < 30; broj1++)
                     servo0(); //automobil zakljucan - inicijalno stanje
-                zakljucan++;
+                zakljucan++; //da promenljiva zakljucan vise nije 0
                 RS232_putst("ZAKLJUCAN");
             }
             
             
             if(detektujPrilaz(pir))
             {
-                for(broj1 = 0; broj1 < 2; broj1++)
+                for(broj1 = 0; broj1 < 2; broj1++) //ovde se saceka da se odziv PIR senzora vrati na 0
                     Delay_ms(4000);
                 enfoto = 1;
                 RS232_putst("PIR DETEKTOVAO");
@@ -584,15 +562,16 @@ int main(int argc, char** argv) {
             {
                 for(broj1 = 0; broj1 < 30; broj1++)
                     servo90(); // automobil otkljucan
-                enfoto = 0;
-                enmq3 = 1;
+                
+                enfoto = 0; //spustamo flag
+                enmq3 = 1; //dizemo flag i dozvoljavamo naredno stanje
                 RS232_putst("OBASJAN SAM");
             }
             
             if(enmq3 == 1 )
             {
-                for(broj1 = 0; broj1 < 15; broj1++)
-                    Delay_ms(7000);
+                for(broj1 = 0; broj1 < 15; broj1++) // sacekaj da se vrednost AD konverzije sa MQ3 poveca usled eventualnog prisustva alkohola
+                    Delay_ms(7000);  /////////////////
                 if(mq3 < 1000) //nema alkohola
                 {
                     for(broj1 = 0; broj1 < 30; broj1++)

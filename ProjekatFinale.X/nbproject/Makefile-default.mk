@@ -95,78 +95,90 @@ MP_LINKER_FILE_OPTION=,--script=p30F4013.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Tajmeri.o: Tajmeri.c  .generated_files/dad9ece2c8f310d1fa5e35d246989e2916675139.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/Tajmeri.o: Tajmeri.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Tajmeri.o.d 
 	@${RM} ${OBJECTDIR}/Tajmeri.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Tajmeri.c  -o ${OBJECTDIR}/Tajmeri.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Tajmeri.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Tajmeri.c  -o ${OBJECTDIR}/Tajmeri.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Tajmeri.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/Tajmeri.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/timer2.o: timer2.c  .generated_files/79eeeb4403167e4c5f8ac292eca5e5af031ad5e.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/timer2.o: timer2.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/timer2.o.d 
 	@${RM} ${OBJECTDIR}/timer2.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  timer2.c  -o ${OBJECTDIR}/timer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer2.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  timer2.c  -o ${OBJECTDIR}/timer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/timer2.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/timer2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/timer3.o: timer3.c  .generated_files/f0505ea5e6cc762f8589a7836713ffbc5940144c.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/timer3.o: timer3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/timer3.o.d 
 	@${RM} ${OBJECTDIR}/timer3.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  timer3.c  -o ${OBJECTDIR}/timer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer3.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  timer3.c  -o ${OBJECTDIR}/timer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/timer3.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/timer3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/Main.o: Main.c  .generated_files/58828f7191336fe90cabb134aab5f12078a7f6e1.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/Main.o: Main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Main.o.d 
 	@${RM} ${OBJECTDIR}/Main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Main.c  -o ${OBJECTDIR}/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Main.c  -o ${OBJECTDIR}/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/Main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/adc.o: adc.c  .generated_files/8abcd02307ff3d3be1e49442131f2602acd66f04.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/adc.o: adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/adc.o.d 
 	@${RM} ${OBJECTDIR}/adc.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  adc.c  -o ${OBJECTDIR}/adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  adc.c  -o ${OBJECTDIR}/adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/adc.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/adc.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/driverGLCD.o: driverGLCD.c  .generated_files/13b033b33ad624b00662b1c22ced3e417eae8892.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/driverGLCD.o: driverGLCD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/driverGLCD.o.d 
 	@${RM} ${OBJECTDIR}/driverGLCD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  driverGLCD.c  -o ${OBJECTDIR}/driverGLCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/driverGLCD.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  driverGLCD.c  -o ${OBJECTDIR}/driverGLCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/driverGLCD.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/driverGLCD.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
-${OBJECTDIR}/Tajmeri.o: Tajmeri.c  .generated_files/33d4059bf6b72ff450e5b0bcc23e27975cd70d6.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/Tajmeri.o: Tajmeri.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Tajmeri.o.d 
 	@${RM} ${OBJECTDIR}/Tajmeri.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Tajmeri.c  -o ${OBJECTDIR}/Tajmeri.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Tajmeri.o.d"        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Tajmeri.c  -o ${OBJECTDIR}/Tajmeri.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Tajmeri.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/Tajmeri.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/timer2.o: timer2.c  .generated_files/e4062b229bc6aeefe71ddbfc72b142f1a297d156.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/timer2.o: timer2.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/timer2.o.d 
 	@${RM} ${OBJECTDIR}/timer2.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  timer2.c  -o ${OBJECTDIR}/timer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer2.o.d"        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  timer2.c  -o ${OBJECTDIR}/timer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/timer2.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/timer2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/timer3.o: timer3.c  .generated_files/21b882592f9ac3aa278365b82e835521123a1fff.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/timer3.o: timer3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/timer3.o.d 
 	@${RM} ${OBJECTDIR}/timer3.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  timer3.c  -o ${OBJECTDIR}/timer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer3.o.d"        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  timer3.c  -o ${OBJECTDIR}/timer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/timer3.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/timer3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/Main.o: Main.c  .generated_files/690da811deda2648dca1fdddf83bc0630e7c4476.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/Main.o: Main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Main.o.d 
 	@${RM} ${OBJECTDIR}/Main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Main.c  -o ${OBJECTDIR}/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Main.o.d"        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Main.c  -o ${OBJECTDIR}/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/Main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/adc.o: adc.c  .generated_files/eaebd243daad1bd9a92426b600d0cb109f30c5ce.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/adc.o: adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/adc.o.d 
 	@${RM} ${OBJECTDIR}/adc.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  adc.c  -o ${OBJECTDIR}/adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d"        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  adc.c  -o ${OBJECTDIR}/adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/adc.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/adc.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/driverGLCD.o: driverGLCD.c  .generated_files/40981b0e33b6c9ddf44797ccace13d870be60928.flag .generated_files/d6cd4c9878a2f33fdef21f7a8fea4863e004b4d3.flag
+${OBJECTDIR}/driverGLCD.o: driverGLCD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/driverGLCD.o.d 
 	@${RM} ${OBJECTDIR}/driverGLCD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  driverGLCD.c  -o ${OBJECTDIR}/driverGLCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/driverGLCD.o.d"        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    
+	${MP_CC} $(MP_EXTRA_CC_PRE)  driverGLCD.c  -o ${OBJECTDIR}/driverGLCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/driverGLCD.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	@${FIXDEPS} "${OBJECTDIR}/driverGLCD.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 
