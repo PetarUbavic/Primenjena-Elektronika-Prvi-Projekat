@@ -8,6 +8,7 @@ extern "C" {
 #include<p30fxxxx.h>
 
 //void ADCinit_analog(void);
+void ConfigureTSPins(void);
 void ADCinit(void);
 void ConfigureADCPins(void);
 void ADCinit_analog(void);

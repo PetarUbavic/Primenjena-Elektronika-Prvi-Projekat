@@ -55,6 +55,7 @@ void ConfigureLCDPins (void);
 void ConfigureLcdData(unsigned char direction);
 void SetLcdData(unsigned char vrednost);
 unsigned char ReadLcdData(void);
+void Write_GLCD(unsigned int data);
 void strobe_data(void);
 void LcdInstructionWrite (unsigned char u8Instruction);
 void LcdDelay(unsigned int u32Duration);

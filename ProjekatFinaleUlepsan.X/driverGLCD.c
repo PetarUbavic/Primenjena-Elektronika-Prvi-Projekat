@@ -335,12 +335,22 @@ unsigned char ReadLcdData(void)
 }
 
 
-/*-------------------------------------------------------------------------------
-Tempo for the LCD timing
-	pause()
--------------------------------------------------------------------------------*/
 
+void Write_GLCD(unsigned int data)
+{
+    unsigned char temp;
 
+    temp=data/1000;
+    Glcd_PutChar(temp+'0');
+    data=data-temp*1000;
+    temp=data/100;
+    Glcd_PutChar(temp+'0');
+    data=data-temp*100;
+    temp=data/10;
+    Glcd_PutChar(temp+'0');
+    data=data-temp*10;
+    Glcd_PutChar(data+'0');
+}
 
 void strobe_data(void)
 {

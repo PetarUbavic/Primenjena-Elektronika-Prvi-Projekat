@@ -3,6 +3,11 @@
 #include "adc.h"
 
 
+void ConfigureTSPins(void)
+{
+	TRISCbits.TRISC13=0;
+    TRISCbits.TRISC14=0;
+}
 
 void ConfigureADCPins(void)
 {
@@ -14,7 +19,9 @@ void ConfigureADCPins(void)
     ADPCFGbits.PCFG7=0;//mq3
     ADPCFGbits.PCFG12=0; //foto
 	
-	
+	             
+    TRISAbits.TRISA11 = 0; //izlazni pin
+    TRISDbits.TRISD8 = 0; //izlazni pin
     
 	TRISBbits.TRISB8=1;
 	TRISBbits.TRISB9=1;

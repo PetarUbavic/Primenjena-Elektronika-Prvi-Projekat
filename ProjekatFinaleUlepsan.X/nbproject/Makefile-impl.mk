@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ProjekatFinale.X
+PROJECTNAME=ProjekatFinaleUlepsan.X
 
 # Active Configuration
 DEFAULTCONF=default

@@ -12,6 +12,7 @@
       <itemPath>timer2.h</itemPath>
       <itemPath>timer3.h</itemPath>
       <itemPath>timer3.c</itemPath>
+      <itemPath>Funkcije.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -43,7 +44,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>2.00</languageToolchainVersion>
+        <languageToolchainVersion>1.21</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -181,9 +182,6 @@
       <ICD3PlatformTool>
         <property key="debugoptions.useswbreakpoints" value="true"/>
       </ICD3PlatformTool>
-      <Tool>
-        <property key="debugoptions.useswbreakpoints" value="true"/>
-      </Tool>
     </conf>
   </confs>
 </configurationDescriptor>

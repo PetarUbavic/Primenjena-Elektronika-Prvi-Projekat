@@ -5,18 +5,16 @@
 #include "Tajmeri.h"
 #include "timer2.h"
 #include "timer3.h"
-#include <stdbool.h> 
-//#include <outcompare.h>
-//#include <p30fxxxx.h>
+#include "Funkcije.h"
 
-//#define DRIVE_A PORTBbits.RB10
-//#define DRIVE_B PORTCbits.RC13
 #define DRIVE_A PORTCbits.RC13
 #define DRIVE_B PORTCbits.RC14
 
 #define servo LATDbits.LATD8
 
 #define pocetna 500
+
+#define granicaAlkohola 800
 
 
 _FOSC(CSW_FSCM_OFF & XT_PLL4);//instruction takt je isti kao i kristal 10MHz
@@ -118,43 +116,74 @@ unsigned char tasteri_bmp[1024] = {
    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 
 };
 
+unsigned char const belo_bmp[1024] = {
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 
+};
 
-void Delay(unsigned int N)
-{
-	unsigned int i;
-	for(i=0;i<N;i++);
-}
 
-void ConfigureTSPins(void)
-{
-	//ADPCFGbits.PCFG10=1;
-	//ADPCFGbits.PCFG7=digital;
-
-	//TRISBbits.TRISB10=0;
-	TRISCbits.TRISC13=0;
-    TRISCbits.TRISC14=0;
-	
-	//LATCbits.LATC14=0;
-	//LATCbits.LATC13=0;
-}
-
-/***************************************************************************
-* Ime funkcije      : initUART1                                            *
-* Opis              : inicjalizuje RS232 komunikaciju s 28800 bauda        * 
-* Parameteri        : Nema                                                 *
-* Povratna vrednost : Nema                                                 *
-***************************************************************************/
-void initUART1(void)
-{
-    //OVO JE KOPIRANO IZ Touch screen.X
-    U1BRG=0x0015; //ovim odredjujemo baudrate
-    U1MODEbits.ALTIO=0; //biramo koje pinove koristimo za komunikaciju osnovne ili alternativne, koristimo alternativne
-
-    IEC0bits.U1RXIE = 1;
-    U1STA&=0xfffc;
-    U1MODEbits.UARTEN=1;
-    U1STAbits.UTXEN=1;
-}
 
 void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void) 
 {
@@ -218,41 +247,16 @@ void __attribute__ ((__interrupt__, no_auto_psv)) _T3Interrupt(void) // svakih 1
 	IFS0bits.T3IF = 0;    
 }
 
-void Delay_ms (int vreme)//funkcija za kasnjenje u milisekundama(nije milisekundama menjali smo)
+void Delay_ms (int vreme)//funkcija za kasnjenje po 0.1ms tajmera 2
 {
     stoperica = 0;
 	while(stoperica < vreme);
 }
 
-void Delay_ms3 (int vreme)//funkcija za kasnjenje u milisekundama (nije milisekundama menjali smo)
+void Delay_ms3 (int vreme)////funkcija za kasnjenje po 0.1ms tajmera 3
 {
 	stoperica3 = 0;
 	while(stoperica3 < vreme);
-}
-
-/*********************************************************************
-* Ime funkcije      : WriteUART1                            		 *
-* Opis              : Funkcija upisuje podatke u registar U1TXREG,   *
-*                     za slanje podataka    						 *
-* Parameteri        : unsigned int data-podatak koji zelimo poslati  *
-* Povratna vrednost : Nema                                           *
-*********************************************************************/
-void WriteUART1(unsigned int data)
-{
-	while (U1STAbits.TRMT==0);
-    if(U1MODEbits.PDSEL == 4) //3
-        U1TXREG = data;
-    else
-        U1TXREG = data & 0xFF;
-}
-
-void RS232_putst(register const char*str)
-{
-    while((*str)!=0)
-    {
-        WriteUART1(*str);
-        str++;
-    }
 }
 
 void Touch_Panel (void)
@@ -276,79 +280,16 @@ void Touch_Panel (void)
 	DRIVE_B = 1;
 
 	Delay_ms(50); //cekamo jedno vreme da se odradi AD konverzija
-	
 	// ocitavamo y	
 	y_vrednost = temp1;// temp1 je vrednost koji nam daje AD konvertor na LEFT pinu	
 	
     //Ako zelimo da nam X i Y koordinate budu kao rezolucija ekrana 128x64 treba skalirati vrednosti x_vrednost i y_vrednost tako da budu u opsegu od 0-128 odnosno 0-64
-    
     //skaliranje X-koordinate
     X = (x_vrednost-161) * 0.03629;
 
     //vrednosti AD_Xmin i AD_Xmax su minimalne i maksimalne vrednosti koje daje AD konvertor za touch panel.
-
-
     //Skaliranje Y-koordinate
 	Y = (y_vrednost-500) * 0.020725;
-}
-
-void Write_GLCD(unsigned int data)
-{
-    unsigned char temp;
-
-    temp=data/1000;
-    Glcd_PutChar(temp+'0');
-    data=data-temp*1000;
-    temp=data/100;
-    Glcd_PutChar(temp+'0');
-    data=data-temp*100;
-    temp=data/10;
-    Glcd_PutChar(temp+'0');
-    data=data-temp*10;
-    Glcd_PutChar(data+'0');
-}
-
-/***********************************************************************
-* Ime funkcije      : WriteUART1dec2string                     		   *
-* Opis              : Funkcija salje 4-cifrene brojeve (cifru po cifru)*
-* Parameteri        : unsigned int data-podatak koji zelimo poslati    *
-* Povratna vrednost : Nema                                             *
-************************************************************************/
-void WriteUART1dec2string(unsigned int data)
-{
-	unsigned char temp;
-
-	temp=data/1000;
-	WriteUART1(temp+'0');
-	data=data-temp*1000;
-	temp=data/100;
-	WriteUART1(temp+'0');
-	data=data-temp*100;
-	temp=data/10;
-	WriteUART1(temp+'0');
-	data=data-temp*10;
-	WriteUART1(data+'0');
-}
-
-void ispisiPir(unsigned int pir) // ispisuje na terminal vrednost AD konverzije sa PIR-a
-{
-    RS232_putst("  PIR: ");
-    WriteUART1dec2string(pir);
-	for(broj1=0;broj1<1000;broj1++);
-}
-
-void ispisiMq3(unsigned int mq3) // ispisuje na terminal vrednost AD konverzije sa MQ3
-{
-    RS232_putst("  MQ3: ");
-	WriteUART1dec2string(mq3);
-    for(broj1=0;broj1<1000;broj1++);
-}
-
-void ispisiFoto(unsigned int foto) // ispisuje na terminal vrednost AD konverzije sa fotootoprnika
-{
-    RS232_putst("  FOTO: ");
-    WriteUART1dec2string(foto);
-	for(broj1=0;broj1<1000;broj1++);
 }
 
 unsigned int detektujPrilaz(unsigned int pir)
@@ -389,7 +330,6 @@ void servo180() // salje servo na 180 stepeni
     servo = 0;
     Delay_ms(162);
 }
-
 /*******************/
 /*******************/
 
@@ -429,7 +369,7 @@ void Strelica_dole()
 
 void Set_pwm()
 {
-    if(vreme_on == pocetna * 2 + pocetna * 2 / 5)
+    if(vreme_on == pocetna * 2 + pocetna * 2 / 5) //omogucava pwm da skoci na 100%
     {
        LATFbits.LATF6 = 1; //sa ovog pina skidamo PWM za osciloskop
        LATAbits.LATA11 = 1; //sa ovog pina PWM ide na zujalicu
@@ -457,12 +397,7 @@ void Set_pwm()
 
 
 int main(int argc, char** argv) {
-        
-        for(broj1=0;broj1<60000;broj1++);
-             
-        TRISAbits.TRISA11 = 0; //izlazni pin
-        TRISDbits.TRISD8 = 0; //izlazni pin
-		
+	
         for(broj1=0;broj1<60000;broj1++); 
         
         ConfigureADCPins(); //podesi pinove za AD konverziju
@@ -480,12 +415,17 @@ int main(int argc, char** argv) {
         
 	while(1)
 	{ 
-        if(rec[0] == 'D' && rec[1] == 'O'&& rec[2] == 'R' && rec[3] == 'O' && rec[4] == 'S')
+        if(rec[0] == 'D' && rec[1] == 'O' && rec[2] == 'R' && rec[3] == 'O' && rec[4] == 'S')
         {
-            rec[0] = 'A'; // rec[0]='A' zato sto inace non stop menja stanja, te je taster = 1 te je taster = 0;
+            for(broj1=0; broj1<5; broj1++)
+                rec[broj1] = 'A'; // rec[4]='A' zato sto inace non stop menja stanja, te je taster = 1 te je taster = 0;
             taster++; // promenljiva taster sluzi da li se izvrsava PWM deo koda, ili senzorski deo koda
             if(taster % 2 == 0) 
                 taster = 0;
+            GLCD_ClrScr();
+            GLCD_DisplayPicture(belo_bmp);
+            GoToXY(35, 8);
+            GLCD_Printf("ZAKLJUCAN");
         }
         
         
@@ -510,10 +450,11 @@ int main(int argc, char** argv) {
             Strelica_dole(); //proverava da li je pritisnut "taster" Strelica na dole
     
             Set_pwm(); //podesava PWM u zavisnosti u pritisnutih tastera
+            RS232_putst("Vreme off: ");
             WriteUART1dec2string(vreme_off);
-            WriteUART1(32);
+            RS232_putst("   Vreme on: ");
             WriteUART1dec2string(vreme_on);
-            WriteUART1(32);
+            RS232_putst("   Korak: ");
             WriteUART1dec2string(korak);
             WriteUART1(13);
         }
@@ -522,20 +463,35 @@ int main(int argc, char** argv) {
         {
             if(zakljucan == 0) //promenljiva zakljucan sluzi da se samo jednom prodje kroz deo koda koji se nalazi u ifu, da se servo ne bi non stop vracao na 0
             {
+                
+                GLCD_ClrScr();
+                GoToXY(35, 8);
+                GLCD_Printf("ZAKLJUCAN");
+                
+                
                 enpir = 0; //vracam enpir na 0 da ne bi doslo do overflowa
                 for(broj1 = 0; broj1 < 30; broj1++)
                     servo0(); //automobil zakljucan - inicijalno stanje
                 zakljucan++; //da promenljiva zakljucan vise nije 0
+                
                 RS232_putst("ZAKLJUCAN");
+                WriteUART1(13);
             }
             
             
             if(detektujPrilaz(pir))
-            {
+            {   
+                if(enfoto == 0)
+                    GLCD_ClrScr();
+                
                 for(broj1 = 0; broj1 < 2; broj1++) //ovde se saceka da se odziv PIR senzora vrati na 0
                     Delay_ms(4000);
                 enfoto = 1; //flag za dozvolu fotootpornika ide na jedinicu, dozvoljeno obasjavanje
-                RS232_putst("PIR DETEKTOVAO");
+                
+                GoToXY(0, 0);
+                GLCD_Printf("PIR DETEKTOVAO PRILAZOBASJAJ FOTO");
+                RS232_putst("PIR DETEKTOVAO, OBASJAJ FOTO");
+                WriteUART1(13);
             }
                 
             if(enfoto == 1 && foto < 200)  //enable fotootoprnika dozvoljen i fotootpornik obasjan
@@ -543,20 +499,36 @@ int main(int argc, char** argv) {
                 for(broj1 = 0; broj1 < 30; broj1++)
                     servo90(); // automobil otkljucan
                 
+                
                 enfoto = 0; //spustamo flag
                 enmq3 = 1; //dizemo flag i dozvoljavamo naredno stanje
                 RS232_putst("OBASJAN SAM");
+                WriteUART1(13);
+                GLCD_ClrScr();
+                GoToXY(35, 8);
+                GLCD_Printf("OTKLJUCAN");
+                GoToXY(0, 0);
+                GLCD_Printf("DUVAJ U PRAVCU MQ3-A");
+                
             }
             
             if(enmq3 == 1 ) //dozvoljen MQ3
             {
                 for(broj1 = 0; broj1 < 15; broj1++) // sacekaj da se vrednost AD konverzije sa MQ3 poveca usled eventualnog prisustva alkohola
+                { 
                     Delay_ms(7000);  /////////////////
-                if(mq3 < 1000) //nema alkohola
+                    GoToXY(0, 4);
+                    Write_GLCD(14-broj1);
+                }
+                if(mq3 < granicaAlkohola) //nema alkohola
                 {
                     for(broj1 = 0; broj1 < 30; broj1++)
                         servo180(); // automobil dozvoljava paljenje
                     RS232_putst("SRECAN PUT");
+                    GLCD_ClrScr();
+                    GoToXY(35, 100);
+                    GLCD_Printf("SRECAN PUT");
+                    WriteUART1(13);
                     
                     for(broj1 = 0; broj1 < 5; broj1++) // sacekaj malo da se servo zadrzi na 180 stepeni
                     Delay_ms(7000);
@@ -565,16 +537,20 @@ int main(int argc, char** argv) {
                 else //ima alkohola
                 {
                     RS232_putst("Ej druze pijan si");
+                    GLCD_ClrScr();
+                    GoToXY(0, 0);
+                    GLCD_Printf("EJ DRUZE PIJAN SI");
+                    WriteUART1(13);
+                    for(broj1 = 0; broj1 < 5; broj1++) // sacekaj da se stinge procitati ispis
+                        Delay_ms(7000);
                     zakljucan = 0; //vrati na pocetno stanje
                 }
                 enmq3 = 0; //gasimo enable za MQ3
             }
             
-            WriteUART1dec2string(enpir);
+    //  WriteUART1dec2string(enpir);
         
-           
-            
-        /*ispisiPir(pir);
+        ispisiPir(pir);
         ispisiMq3(mq3);
         ispisiFoto(foto);
        
